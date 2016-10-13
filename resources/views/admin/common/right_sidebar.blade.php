@@ -95,7 +95,7 @@
 					<div class="sidebar-message">
 						<a href="#">
 							<div class="pull-left text-center">
-								<img alt="image" class="img-circle message-avatar" src="img/a2.jpg">
+								<img alt="image" class="img-circle message-avatar" src="img/temppic1.jpg">
 							</div>
 							<div class="media-body">
 								HCY48之音乐大魔王会员专属皮肤已上线，快来一键换装拥有他，宣告你对华晨宇的爱吧！
@@ -108,7 +108,7 @@
 					<div class="sidebar-message">
 						<a href="#">
 							<div class="pull-left text-center">
-								<img alt="image" class="img-circle message-avatar" src="img/a4.jpg">
+								<img alt="image" class="img-circle message-avatar" src="img/temppic2.jpg">
 							</div>
 							<div class="media-body">
 								我发起了一个投票 【你认为下午大盘会翻红吗？】

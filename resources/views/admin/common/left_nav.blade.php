@@ -8,7 +8,7 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" /></span>
+                            <span><img alt="image" class="img-circle" src="img/admin_headpic.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
                                <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>

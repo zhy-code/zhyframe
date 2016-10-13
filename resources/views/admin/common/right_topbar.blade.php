@@ -2,12 +2,15 @@
 <div id="page-wrapper" class="gray-bg dashbard-1">
 	<div class="row border-bottom">
 		<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
-			<div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
-				<form role="search" class="navbar-form-custom" method="post" action="http://www.zi-han.net/theme/hplus/search_results.html">
+			<div class="navbar-header">
+				<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+				<!--
+				<form role="search" class="navbar-form-custom" method="post" action="">
 					<div class="form-group">
 						<input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
 					</div>
 				</form>
+				-->
 			</div>
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown">
@@ -18,7 +21,7 @@
 						<li class="m-t-xs">
 							<div class="dropdown-messages-box">
 								<a href="profile.html" class="pull-left">
-									<img alt="image" class="img-circle" src="img/a7.jpg">
+									<img alt="image" class="img-circle" src="img/temppic3.jpg">
 								</a>
 								<div class="media-body">
 									<small class="pull-right">46小时前</small>
@@ -32,7 +35,7 @@
 						<li>
 							<div class="dropdown-messages-box">
 								<a href="profile.html" class="pull-left">
-									<img alt="image" class="img-circle" src="img/a4.jpg">
+									<img alt="image" class="img-circle" src="img/temppic2.jpg">
 								</a>
 								<div class="media-body ">
 									<small class="pull-right text-navy">25小时前</small>
@@ -96,6 +99,7 @@
 			</ul>
 		</nav>
 	</div>
+	
 	<div class="row content-tabs">
 		<button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
 		</button>
@@ -126,7 +130,7 @@
 		<iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index_v148b2.html?v=4.0" frameborder="0" data-id="index_v1.html" seamless></iframe>
 	</div>
 	<div class="footer">
-		<div class="pull-right">&copy; 2014-2015 <a href="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+		<div class="pull-right">&copy; 2016-2018 <a href="http://www.5cub.com" target="_blank">zhyframe</a>
 		</div>
 	</div>
 </div>
