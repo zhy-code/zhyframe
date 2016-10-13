@@ -40,12 +40,6 @@
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="J_menuItem" href="index_v1.html" data-index="0">主页示例一</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="index_v2.html">主页示例二</a>
-                            </li>
-                            <li>
                                 <a class="J_menuItem" href="index_v3.html">主页示例三</a>
                             </li>
                             <li>

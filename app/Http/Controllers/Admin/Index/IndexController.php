@@ -12,10 +12,17 @@ use View;
 class IndexController extends Controller
 {
 	/**
-	 * 后台控制主页面
+	 * 后台控制主架构
 	 */
 	public function index() {
 		return View::make('admin.index.index');
+	}
+
+	/**
+	 * 后台控制主页面
+	 */
+	public function welcome() {
+		return View::make('admin.index.welcome');
 	}
 
 	
