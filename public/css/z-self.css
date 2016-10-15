@@ -1,0 +1,9 @@
+/* 字体大小 */
+.fa{
+	font-size:20px;
+}
+
+/* 左侧导航字体大小 */
+.nav .nav-label{
+	font-size:15px;
+}

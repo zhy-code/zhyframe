@@ -1,7 +1,7 @@
 <!--右侧部分开始-->
 <div id="page-wrapper" class="gray-bg dashbard-1">
 	<div class="row border-bottom">
-		<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+		<nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 5px">
 			<div class="navbar-header">
 				<a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
 				<!--
@@ -12,6 +12,7 @@
 				</form>
 				-->
 			</div>
+			<!--
 			<ul class="nav navbar-top-links navbar-right">
 				<li class="dropdown">
 					<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -97,6 +98,7 @@
 					</a>
 				</li>
 			</ul>
+			-->
 		</nav>
 	</div>
 	

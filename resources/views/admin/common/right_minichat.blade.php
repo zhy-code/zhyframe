@@ -1,4 +1,4 @@
-<!--mini聊天窗口开始-->
+<!--mini聊天窗口开始
 <div class="small-chat-box fadeInRight animated">
 
 	<div class="heading" draggable="true">

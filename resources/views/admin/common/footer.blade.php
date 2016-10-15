@@ -7,6 +7,7 @@
 <script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
 <script src="{{ asset('js/hplus.min.js?v=4.1.0') }}"></script>
 <script src="{{ asset('js/contabs.min.js') }}"></script>
+<script src="{{ asset('js/z-public.js') }}"></script>
 @section('footer')
 
 @show
