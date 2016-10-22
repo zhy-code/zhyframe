@@ -1,4 +1,4 @@
-@extends('admin.common.inner_frame')
+@extends('admin.common.zhyframe')
 
 @section('head')
 <!--<link rel="stylesheet" href="{{ asset('css/plugins/iCheck/custom.css') }}" />-->

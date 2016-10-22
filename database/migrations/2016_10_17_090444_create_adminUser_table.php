@@ -18,17 +18,15 @@ class CreateAdminUserTable extends Migration
             $table->string('user_name', 30)->unique()->comment('后台管理员名/账号');
             $table->string('user_password', 50)->comment('后台管理员密码');
 			$table->tinyInteger('user_status')->default(0)->comment('后台管理员状态 0正常，1禁用');
-			
-            $table->text('task_content')->comment('任务内容');
-			$table->Integer('task_publisher')->comment('任务发布人Id');
-			$table->Integer('task_finisher')->comment('任务完成人Id');
-			$table->string('task_datetime', 50)->comment('任务预定开展时间');
-			$table->tinyInteger('task_weekday')->comment('任务预定开展的星期数');
-			$table->Integer('task_add_time')->comment('任务添加的时间');
-			$table->string('task_add_ip', 20)->comment('任务添加的IP');
-			$table->Integer('task_edit_time')->comment('任务最后编辑的时间');
-			$table->string('task_eidt_ip', 20)->comment('任务最后编辑的IP');
-			$table->tinyInteger('task_status')->comment('任务状态 0未做，1已完成，-1已过期');
+            $table->string('user_remark',100)->comment('后台管理员备注');
+			$table->Integer('user_last_login_time')->comment('最后登录时间');
+			$table->string('user_last_login_ip',20)->comment('最后登录IP');
+			$table->string('user_true_name', 30)->comment('后台管理员姓名');
+			$table->Integer('user_add_time')->comment('后台管理员添加时间');
+			$table->string('user_add_ip',20)->comment('后台管理员添加IP');
+			$table->Integer('user_edit_time')->comment('后台管理员最后编辑的时间');
+			$table->string('user_eidt_ip', 20)->comment('后台管理员最后编辑的IP');
+            $table->string('user_login_rnd', 64)->comment('后台管理员登陆标识符，随机数');
         });
     }
 

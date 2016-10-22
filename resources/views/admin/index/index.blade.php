@@ -1,13 +1,7 @@
-@extends('admin.common.main_frame')
-
-@section('web_title', 'ZhyFrame')
-@section('web_keywords', '雪霁,互联网,后台管理,Laravel')
-@section('web_description', '上海雪霁互联网有限公司')
-
-@section('content')
-
-@endsection
-
-@section('footer')
-
-@endsection
+@include('admin.common.head')
+@include('admin.common.sidebar')
+@include('admin.common.footer')
+<script src="{{ asset('js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+<script src="{{ asset('js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ asset('js/plugins/pace/pace.min.js') }}"></script>
+<script src="{{ asset('js/contabs.js') }}"></script>
