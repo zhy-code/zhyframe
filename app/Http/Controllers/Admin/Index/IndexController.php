@@ -33,6 +33,14 @@ class IndexController extends Controller
 		return View::make('admin.index.welcome');
 	}
 
+	/**
+	 * 后台控制主页面
+	 */
+	public function login()
+	{
+		return View::make('admin.index.login');
+	}
+
 	
 	/**
      *  后台退出操作
