@@ -4,7 +4,8 @@
  * 网站后台路由登陆
  * 
  */
-Route::any('/admin/login', 'Admin\Index\IndexController@login');
+Route::get('/admin/login', 'Admin\Index\IndexController@login');
+Route::post('/admin/login', 'Admin\Index\IndexController@toLogin');
 
 //Route::group(['middleware'=>'adminAuth', 'prefix' => 'admin'],function() {
 Route::group(['prefix' => 'admin'],function() {
