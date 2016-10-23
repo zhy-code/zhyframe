@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Index;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-use DB;
 use View;
 use Session;
 use Redirect;
 use App\Model\AdminMenu;
+use App\Model\AdminUser;
 
 class IndexController extends Controller
 {
@@ -20,13 +20,14 @@ class IndexController extends Controller
 	 */
 	public function index()
 	{
-		$menulist = AdminMenu::where(['menu_parent_id' => 0, 'menu_status' => 1])->get()->toArray();
-		if ($menulist) {
-			foreach ($menulist as $key => $value) {
-				$menulist[$key]['soninfo'] = AdminMenu::where(['menu_parent_id' => $value['menu_id'], 'menu_status' => 1])->get()->toArray();
+		$menu_list = AdminMenu::where(['menu_parent_id' => 0, 'menu_status' => 1])->get()->toArray();
+		if ($menu_list) {
+			foreach ($menu_list as $key => $value) {
+				$menu_list[$key]['soninfo'] = AdminMenu::where(['menu_parent_id' => $value['menu_id'], 'menu_status' => 1])->get()->toArray();
 			}
 		}
-		return View::make('admin.index.index', ['menulist' => $menulist]);
+		$admin_user = Session::get('adminuser')->toArray();
+		return View::make('admin.index.index', ['menulist' => $menu_list, 'adminuser' => $admin_user]);
 	}
 
 	/**
@@ -51,7 +52,7 @@ class IndexController extends Controller
 	public function toLogin(Requests\AdminUserLoginRequest $request)
 	{
 		$data = $request->all();
-		$userInfo = DB::table('admin_user')->where('user_name', $data['user_name'])->first();
+		$userInfo = AdminUser::where('user_name', $data['user_name'])->first();
 		if (count($userInfo) == 0) {
             $jsonData = [
 	            'status'  => '0',
@@ -80,7 +81,7 @@ class IndexController extends Controller
         		'user_last_login_time' => time(),
         		'user_last_login_ip'   => $request->getClientIp(),
         	];
-        	DB::table('admin_user')->where('user_id',$userInfo->user_id)->update($update_data);
+        	AdminUser::where('user_id',$userInfo->user_id)->update($update_data);
         	session(['adminuser' => $userInfo]);
         	$jsonData = [
         		'status'  => '1',

@@ -6,14 +6,11 @@
             </div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="side-menu">
-                    <li class="nav-header">
+                    <li class="nav-header" style="text-align:center">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" src="img/admin_headpic.jpg" /></span>
+                            <span><img alt="image" class="img-circle" style="width:75px;height:75px;" src="img/admin_headpic.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="clear">
-                               <span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
-                                <span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
-                                </span>
+                                <span class="block mt-15" style="font-size:20px;">{{$adminuser['user_name']}}</span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a class="J_menuItem" href="profile.html">个人信息</a>
@@ -37,12 +34,12 @@
                         <ul class="nav nav-second-level">
 							@foreach ($val['soninfo'] as $k => $v)
                             <li>
-                                <a class="J_menuItem" href="/{{strtolower($v['menu_module'])}}/{{strtolower($v['menu_controller'])}}/{{strtolower($v['menu_action'])}}/{{strtolower($v['menu_id'])}}/{{strtolower($v['menu_parameter'])}}">{{$v['menu_name']}}</a>
+                                <a class="J_menuItem" href="/{{strtolower($v['menu_module'])}}/{{strtolower($v['menu_controller'])}}/{{strtolower($v['menu_action'])}}/{{strtolower($v['menu_parameter'])}}">{{$v['menu_name']}}</a>
                             </li>
 							@endforeach
                         </ul>
 						@else
-							<a class="J_menuItem" href="/{{strtolower($val['menu_module'])}}/{{strtolower($val['menu_controller'])}}/{{strtolower($val['menu_action'])}}/{{strtolower($val['menu_id'])}}/{{strtolower($val['menu_parameter'])}}"><i class="fa fa-{{$val['menu_icon']}}"></i> <span class="nav-label">{{$val['menu_name']}}</span></a>
+							<a class="J_menuItem" href="/{{strtolower($val['menu_module'])}}/{{strtolower($val['menu_controller'])}}/{{strtolower($val['menu_action'])}}/{{strtolower($val['menu_parameter'])}}"><i class="fa fa-{{$val['menu_icon']}}"></i> <span class="nav-label">{{$val['menu_name']}}</span></a>
 						@endif
                     </li>
 					@endforeach

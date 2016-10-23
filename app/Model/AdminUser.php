@@ -13,4 +13,12 @@ class AdminUser extends Model
 
     public $timestamps = false;
 
+    protected $hidden = ['user_password', 'user_login_rnd'];
+
+    public function setUserPasswordAttribute($user_password)
+    {
+        $this->attributes['user_password'] = \Hash::make($user_password);
+    }
+
+
 }

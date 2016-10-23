@@ -1,7 +1,7 @@
 @extends('admin.common.zhyframe')
 
 @section('head')
-<!--<link rel="stylesheet" href="{{ asset('css/plugins/iCheck/custom.css') }}" />-->
+
 @endsection
 
 @section('content')
@@ -29,5 +29,5 @@
 @endsection
 
 @section('footer')
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+
 @endsection
