@@ -17,7 +17,7 @@ class AdminAuthCheck
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!$request->session()->has('admin'))
+        if (!$request->session()->has('adminuser'))
         {
             return redirect('admin/login');
         }

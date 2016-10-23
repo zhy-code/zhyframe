@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Admin\Index;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
-use App\Model\AdminMenu;
+use DB;
 use View;
+use Session;
+use Redirect;
+use App\Model\AdminMenu;
 
 class IndexController extends Controller
 {
@@ -34,20 +38,65 @@ class IndexController extends Controller
 	}
 
 	/**
-	 * 后台控制主页面
+	 * 后台登陆页面
 	 */
 	public function login()
 	{
 		return View::make('admin.index.login');
 	}
 
+	/**
+	 * 后台登陆方法
+	 */
+	public function toLogin(Requests\AdminUserLoginRequest $request)
+	{
+		$data = $request->all();
+		$userInfo = DB::table('admin_user')->where('user_name', $data['user_name'])->first();
+		if (count($userInfo) == 0) {
+            $jsonData = [
+	            'status'  => '0',
+	            'message' => '用户名不存在',
+	        ];
+        } else {
+        	/*
+        	$check_pwd = Hash::check($data['user_password'] , $userInfo->user_password);
+        	if (!$check_pwd) {
+        		$jsonData = [
+		            'status'  => '0',
+		            'message' => '密码错误',
+		        ];
+        	}
+        	*/
+        	if (!$userInfo->user_status) {
+        		$jsonData = [
+		            'status'  => '0',
+		            'message' => '账号已被禁用，请联系总管理员',
+		        ];
+        	}
+        }
+
+        if(!isset($jsonData)) {
+        	$update_data = [
+        		'user_last_login_time' => time(),
+        		'user_last_login_ip'   => $request->getClientIp(),
+        	];
+        	DB::table('admin_user')->where('user_id',$userInfo->user_id)->update($update_data);
+        	session(['adminuser' => $userInfo]);
+        	$jsonData = [
+        		'status'  => '1',
+		        'message' => '登陆成功',
+		        'jumpurl' => '/admin',
+        	];
+        }
+        return response()->json($jsonData);
+	}
 	
 	/**
      *  后台退出操作
      */
     public function logout()
     {
-        $res = Session::forget('user');
+        $res = Session::forget('adminuser');
         return Redirect::to('/admin/login');
     }
 }
