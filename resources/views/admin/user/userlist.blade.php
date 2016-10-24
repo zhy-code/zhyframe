@@ -32,7 +32,9 @@ table tbody tr td{
                                         <i class="glyphicon glyphicon-trash mr-10" aria-hidden="true"></i>批量删除
                                     </button>
                                 </div>
-                                <table id="tableEvents" data-height="400" data-mobile-responsive="true">
+                                <form id="userListForm">
+								<input type="hidden" name="_method" value="DELETE">
+								<table id="tableEvents" data-height="400" data-mobile-responsive="true">
                                     <thead>
                                         <tr>
                                             <th data-field="state" data-checkbox="true"></th>
@@ -44,6 +46,7 @@ table tbody tr td{
                                         </tr>
                                     </thead>
                                 </table>
+								</form>
                             </div>
                         </div>
                         <!-- End Example Events -->
