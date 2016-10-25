@@ -24,7 +24,16 @@ class UserController extends Controller
 		$user_list_json = json_encode($user_list);
 		return View::make('admin.user.userlist', ['userlist'=>$user_list_json]);
 	}
-
+	
+	/**
+	 * 后台管理员编辑页面
+	 */
+	public function userEdit($userid)
+	{
+		$user_info = AdminUser::find($userid)->toArray();
+		return View::make('admin.user.userview', ['userlist'=>$user_info]);
+	}
+	
 	/**
 	 * 后台管理员变更状态
 	 */
