@@ -27,7 +27,7 @@
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label ftz-16">
-							选择框
+							选择框XX
 						</label>
 
 						<div class="col-sm-8">
