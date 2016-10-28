@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>Bootstrap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/public.css" />
 <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -9,91 +10,339 @@
 </head>
 <body>
 <div class="container">
-	<h1>Bootstrap 样式</h1>
 	<div class="row">
-		<table class="table table-striped table-hover">
-			<caption>任何带有 class <b>.btn</b> 的元素都会继承圆角灰色按钮的默认外观;可用于&lt;a&gt;, &lt;button&gt;, 或 &lt;input&gt; 元素上</caption>
+		<h2 class="text-c">Bootstrap 按钮样式</h2>
+		<table class="table table-striped table-hover ">
+			<caption>
+				<small class="fr">可用于&lt;a&gt;, &lt;button&gt;, 或 &lt;input&gt; 元素上</small>
+			</caption>
 			<thead>
-				<tr>
-					<th>类</th>
-					<th>描述</th>
-				</tr>
 			</thead>
-			<tbody>
+			<tbody class="text-c">
 				<tr>
 					<td>.btn</td>
 					<td>为按钮添加基本样式</td>
+					<td><button type="button" class="btn">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-default</td>
 					<td>默认/标准按钮</td>
+					<td><button type="button" class="btn btn-default">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-primary</td>
 					<td>原始按钮样式（未被操作）</td>
+					<td><button type="button" class="btn btn-primary">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-success</td>
 					<td>表示成功的动作</td>
+					<td><button type="button" class="btn btn-success">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-info</td>
 					<td>该样式可用于要弹出信息的按钮</td>
+					<td><button type="button" class="btn btn-info">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-warning</td>
 					<td>表示需要谨慎操作的按钮</td>
+					<td><button type="button" class="btn btn-warning">样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-danger</td>
 					<td>表示一个危险动作的按钮操作</td>
+					<td><button type="button" class="btn btn-danger">样式</button></td>					
 				</tr>
 				<tr>
 					<td>.btn-link</td>
-					<td>让按钮看起来像个链接 (仍然保留按钮行为)</td>
+					<td>让按钮看起来像个链接</td>
+					<td><button type="button" class="btn btn-link">样式</button></td>						
 				</tr>
 				<tr>
 					<td>.btn-lg</td>
 					<td>制作一个大按钮</td>
+					<td><button type="button" class="btn btn-primary btn-lg">大的样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-sm</td>
 					<td>制作一个小按钮</td>
+					<td><button type="button" class="btn btn-success btn-sm">小的样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-xs</td>
 					<td>制作一个超小按钮</td>
+					<td><button type="button" class="btn btn-warning btn-xs">超小的样式</button></td>
 				</tr>
 				<tr>
 					<td>.btn-block</td>
 					<td>块级按钮(拉伸至父元素100%的宽度)</td>
+					<td><button type="button" class="btn btn-danger btn-block">块级样式</button></td>
 				</tr>
 				<tr>
 					<td>.active</td>
-					<td>按钮被点击</td></td>
+					<td>按钮被点击</td>
+					<td><button type="button" class="btn btn-default active">点击样式</button></td>
 				</tr>
 				<tr>
 					<td>.disabled</td>
 					<td>禁用按钮</td>
+					<td><button type="button" class="btn btn-default disabled">禁用样式</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<h2 class="text-c">Bootstrap 表单样式</h2>
+		
+		<ul class="list-group mt-50">
+			<li class="list-group-item">&lt;form&gt; 元素添加 <i>role="form"</i></li>
+			<li class="list-group-item">把标签和控件放在 &lt;div class="form-group" &gt; &lt;/div&gt;中</li>
+			<li class="list-group-item">文本元素 &lt;input&gt;、&lt;textarea&gt; 和 &lt;select&gt; 添加 class="form-control"</li>
+			<li class="list-group-item">input 添加 disabled 属性，会改变输入框的样式以及当鼠标悬停的样式</li>
+			<li class="list-group-item">使用&lt;fieldset disabled&gt; &lt;fieldset&gt;来禁用标签内的所有控件</li>
+			<li class="list-group-item">对父元素简单地添加适当的 class（.has-warning、 .has-error 或 .has-success）即可使用验证状态</li>
+			<li class="list-group-item">可使用 class .input-lg 和 .col-lg-* 来设置表单的高度和宽度</li>
+			<li class="list-group-item">可在 input 后使用 .help-block 加一个块级帮助文本</li>
+		</ul>
+		
+		<h4 class="mt-25 mb-25"><strong>1、垂直/默认表单</strong></h4>
+		<form role="form">
+			<div class="form-group">
+				<label for="name">名称</label>
+				<input type="text" class="form-control" id="name" placeholder="请输入名称">
+			</div>
+			<div class="form-group">
+				<label for="inputfile">上传文件</label>
+				<input type="file" id="inputfile">
+			</div>
+		</form>
+		
+		<h4 class="mt-25 mb-25"><strong>2、内联表单</strong></h4>
+		<ul class="list-group">
+			<li class="list-group-item">&lt;form class="form-inline" role="form"&gt;</li>
+			<li class="list-group-item">在使用内联表单时，您需要在表单控件上设置一个宽度</li>
+		</ul>
+		<form role="form" class="form-inline">
+			<div class="form-group">
+				<label for="name">名称</label>
+				<input type="text" class="form-control" id="name" placeholder="请输入名称">
+			</div>
+			<div class="form-group ml-20">
+				<label for="inputfile">上传文件</label>
+				<input type="file" id="inputfile">
+			</div>
+			<div class="checkbox ml-20">
+				<label><input type="checkbox"> 请打勾 </label>
+			</div>
+		</form>
+		
+		<h4 class="mt-25 mb-25"><strong>3、水平表单</strong></h4>
+		<ul class="list-group">
+			<li class="list-group-item">&lt;form class="form-horizontal" role="form"&gt;</li>
+			<li class="list-group-item">&lt;label class="control-label"&gt;</li>
+		</ul>
+		<form role="form" class="form-horizontal">
+			<div class="form-group">
+				<label class="col-sm-2 control-label">放置纯文本</label>
+				<div class="col-sm-10">
+					<p class="form-control-static">XXX姓名</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">用户名</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="" placeholder="请输入用户名">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">密码</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="" placeholder="请输入密码">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">兴趣</label>
+				<div class="col-sm-10">
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" class="input-checkbox"><i class="mr-5">✓</i>复选框
+						</label>
+						<label>
+							<input type="checkbox" class="input-checkbox" checked><i class="mr-5">✓</i>复选框
+						</label>
+						<label>
+							<input type="checkbox" class="input-checkbox" disabled><i class="mr-5">✓</i>复选框
+						</label>
+						<label>
+							<input type="checkbox" class="input-checkbox" disabled checked><i class="mr-5">✓</i>复选框
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">性别</label>
+				<div class="col-sm-10">
+					<div class="radio">
+						<label>
+							<input type="radio" class="input-radio" name="sex"><i class="mr-5">✓</i>单选框
+						</label>
+						<label>
+							<input type="radio" class="input-radio" name="sex" checked><i class="mr-5">✓</i>单选框
+						</label>
+						<label>
+							<input type="radio" class="input-radio" name="sex" disabled><i class="mr-5">✓</i>单选框
+						</label>
+						<label>
+							<input type="radio" class="input-radio" name="sex" disabled checked><i class="mr-5">✓</i>单选框
+						</label>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">文本框</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" rows="3">可根据 rows 的数值控制文本框高度</textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="name" class="col-sm-2 control-label">选择下拉框</label>
+				<div class="col-sm-10">
+					<select class="form-control">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="" class="col-sm-2 control-label">控制宽度</label>
+				<div class="col-sm-10 col-lg-3">
+					<input type="text" class="form-control" id="" placeholder="宽度：col-lg-3">
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<h2 class="text-c">Bootstrap 表格样式</h2>
+		<table class="table table-striped table-hover ">
+			<thead>
+				<tr>
+					<th class="text-c">表格元素</th>
+				</tr>
+			</thead>
+			<tbody class="text-c">
+				<tr>
+					<td>&lt;table&gt;</td>
+					<td>为表格添加基础样式。</td>
 				</tr>
 				<tr>
-					<td>按钮元素</td>
-					<td>添加 <b>.active</b> class 来显示它是激活的。</td>
+					<td>&lt;thead&gt;</td>
+					<td>表格标题行的容器元素（&lt;tr&gt;），标识表格列</td>
 				</tr>
 				<tr>
-					<td>锚元素</td>
-					<td>添加 <b> .active</b> class 到 &lt;a&gt; 按钮来显示它是激活的。</td>
-				</tr>
-					<td>按钮元素</td>
-					<td>添加 <b>disabled</b> <i>属性</i> 到 &lt;button&gt; 按钮。</td>
+					<td>&lt;tbody&gt;</td>
+					<td>表格主体中的表格行的容器元素（&lt;tr&gt;）</td>
 				</tr>
 				<tr>
-					<td>锚元素</td>
-					<td>添加 <b>disabled</b> <i>class</i> 到 &lt;a&gt; 按钮。<br><i>注意：该 class 只会改变 &lt;a&gt; 的外观，不会改变它的功能。在这里，您需要使用自定义的 JavaScript 来禁用链接。</i>
+					<td>&lt;tr&gt;</td>
+					<td>一组出现在单行上的表格单元格的容器元素</td>
+				</tr>
+				<tr>
+					<td>&lt;td&gt;</td>
+					<td>默认的表格单元格</td>
+				</tr>
+				<tr>
+					<td>&lt;th&gt;</td>
+					<td>特殊单元格，标识列或行。必须在&lt;thead&gt;使用</td>
+				</tr>
+				<tr>
+					<td>&lt;caption&gt;</td>
+					<td>关于表格存储内容的描述或总结</td>					
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="text-c">表格样式</th>
+				</tr>
+			</thead>
+			<tbody class="text-c">
+				<tr class="danger">
+					<td>.table-responsive</td>
+					<td>把任意的 .table 包在其中，便可响应式 </td>
+				</tr>
+				<tr>
+					<td>.table</td>
+					<td>为任意 &lt;table&gt; 添加基本样式 (只有横向分隔线) </td>
+				</tr>
+				<tr>
+					<td>.table-striped</td>
+					<td>在 &lt;tbody&gt; 内添加斑马线形式的条纹 ( IE8 不支持)</td>
+				</tr>
+				<tr>
+					<td>.table-bordered</td>
+					<td>为所有表格的单元格添加边框</td>
+				</tr>
+				<tr>
+					<td>.table-hover</td>
+					<td>在 &lt;tbody&gt; 内的任一行启用鼠标悬停状态</td>
+				</tr>
+				<tr>
+					<td>.table-condensed</td>
+					<td>让表格更加紧凑</td>
+				</tr>
+			</tbody>
+		</table>
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th class="text-c">&lt;tr&gt;, &lt;th&gt; 和 &lt;td&gt;样式</th>
+				</tr>
+			</thead>
+			<tbody class="text-c">
+				<tr class="active">
+					<td>.active</td>
+					<td>将悬停的颜色应用在行或者单元格上</td>
+				</tr>
+				<tr class="success">
+					<td>.success</td>
+					<td>表示成功的操作</td>
+				</tr>
+				<tr class="info">
+					<td>.info</td>
+					<td>表示信息变化的操作</td>
+				</tr>
+				<tr class="danger">
+					<td>.danger</td>
+					<td>表示一个警告的操作</td>
+				</tr>
+				<tr class="warning">
+					<td>.warning</td>
+					<td>表示一个危险的操作</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row">
+		<h2 class="text-c">Bootstrap 图片样式</h2>
+		
+		<ul class="list-group mt-50">
+			<li class="list-group-item">通过在 <img> 标签添加 .img-responsive 类来让图片支持响应式设计。 图片将很好地扩展到父元素</li>
+		</ul>
+		<table class="table table-striped table-hover">
+			<tbody class="text-c">
+				<tr>
+					<td>.active</td>
+					<td>将悬停的颜色应用在行或者单元格上</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
+<div class="mt-50"></div>
 </body>
 </html>
