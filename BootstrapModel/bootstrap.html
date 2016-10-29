@@ -9,16 +9,54 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example-navbar-collapse">
+			<span class="sr-only">切换导航</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Bootstrap</a>
+	</div>
+	<div class="collapse navbar-collapse" id="example-navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li><a href="#boot-btn">按钮样式</a></li>
+			<li><a href="#boot-form">表单样式</a></li>
+			<li><a href="#boot-table">表格样式</a></li>
+			<li><a href="#boot-picture">图片样式</a></li>
+			<li><a href="#boot-fuzhu">辅助类</a></li>
+			<li><a href="#boot-paibang">排版样式</a></li>
+			<li><a href="#boot-buju">网格布局</a></li>
+			<li><a href="#boot-bjzj">布局组件</a></li>
+			<!--
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Java <b class="caret"></b></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">jmeter</a></li>
+					<li><a href="#">EJB</a></li>
+					<li><a href="#">Jasper Report</a></li>
+					<li class="divider"></li>
+					<li><a href="#">分离的链接</a></li>
+					<li class="divider"></li>
+					<li><a href="#">另一个分离的链接</a></li>
+				</ul>
+			</li>
+			-->
+		</ul>
+	</div>
+</nav>
+
 <div class="container">
-	<div class="row">
-		<h2 class="text-c">Bootstrap 按钮样式</h2>
+	<div class="row" id="boot-btn">
+		<h2 class="text-center">Bootstrap 按钮样式</h2>
 		<table class="table table-striped table-hover ">
 			<caption>
 				<small class="fr">可用于&lt;a&gt;, &lt;button&gt;, 或 &lt;input&gt; 元素上</small>
 			</caption>
 			<thead>
 			</thead>
-			<tbody class="text-c">
+			<tbody class="text-center">
 				<tr>
 					<td>.btn</td>
 					<td>为按钮添加基本样式</td>
@@ -92,8 +130,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="row">
-		<h2 class="text-c">Bootstrap 表单样式</h2>
+	<div class="row" id="boot-form">
+		<h2 class="text-center">Bootstrap 表单样式</h2>
 		
 		<ul class="list-group mt-50">
 			<li class="list-group-item">&lt;form&gt; 元素添加 <i>role="form"</i></li>
@@ -225,15 +263,15 @@
 			</div>
 		</form>
 	</div>
-	<div class="row">
-		<h2 class="text-c">Bootstrap 表格样式</h2>
+	<div class="row" id="boot-table">
+		<h2 class="text-center">Bootstrap 表格样式</h2>
 		<table class="table table-striped table-hover ">
 			<thead>
 				<tr>
-					<th class="text-c">表格元素</th>
+					<th class="text-center">表格元素</th>
 				</tr>
 			</thead>
-			<tbody class="text-c">
+			<tbody class="text-center">
 				<tr>
 					<td>&lt;table&gt;</td>
 					<td>为表格添加基础样式。</td>
@@ -267,10 +305,10 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="text-c">表格样式</th>
+					<th class="text-center">表格样式</th>
 				</tr>
 			</thead>
-			<tbody class="text-c">
+			<tbody class="text-center">
 				<tr class="danger">
 					<td>.table-responsive</td>
 					<td>把任意的 .table 包在其中，便可响应式 </td>
@@ -300,10 +338,10 @@
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr>
-					<th class="text-c">&lt;tr&gt;, &lt;th&gt; 和 &lt;td&gt;样式</th>
+					<th class="text-center">&lt;tr&gt;, &lt;th&gt; 和 &lt;td&gt;样式</th>
 				</tr>
 			</thead>
-			<tbody class="text-c">
+			<tbody class="text-center">
 				<tr class="active">
 					<td>.active</td>
 					<td>将悬停的颜色应用在行或者单元格上</td>
@@ -327,20 +365,389 @@
 			</tbody>
 		</table>
 	</div>
-	<div class="row">
-		<h2 class="text-c">Bootstrap 图片样式</h2>
+	<div class="row" id="boot-picture">
+		<h2 class="text-center">Bootstrap 图片样式</h2>
 		
 		<ul class="list-group mt-50">
 			<li class="list-group-item">通过在 <img> 标签添加 .img-responsive 类来让图片支持响应式设计。 图片将很好地扩展到父元素</li>
 		</ul>
 		<table class="table table-striped table-hover">
-			<tbody class="text-c">
+			<tbody class="text-center">
 				<tr>
-					<td>.active</td>
-					<td>将悬停的颜色应用在行或者单元格上</td>
+					<td>.img-rounded</td>
+					<td>为图片添加圆角 (IE8 不支持)</td>
+					<td><img src="demopic.jpg" class="img-rounded" /></td>
+				</tr>
+				<tr>
+					<td>.img-circle</td>
+					<td>将图片变为圆形 (IE8 不支持)</td>
+					<td><img src="demopic.jpg" class="img-circle" /></td>
+				</tr>
+				<tr>
+					<td>.img-thumbnail</td>
+					<td>缩略图功能</td>
+					<td><img src="demopic.jpg" class="img-thumbnail" /></td>
+				</tr>
+				<tr>
+					<td>.img-responsive</td>
+					<td>图片响应式 (将很好地扩展到父元素)</td>
+					<td><img src="demopic.jpg" class="img-responsive" /></td>
+				</tr>
+				
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="row" id="boot-fuzhu">
+		<h2 class="text-center">Bootstrap 辅助类</h2>
+		
+		<h4 class="mt-25 mb-25"><strong>1、文本</strong></h4>
+		<table class="table table-striped table-hover">
+			<tbody class="text-center">
+				<tr>
+					<td>.text-muted</td>
+					<td><span class="text-muted"> "text-muted" 类的文本样式</span></td>
+				</tr>
+				<tr>
+					<td>.text-primary</td>
+					<td><span class="text-primary"> "text-primary" 类的文本样式</span></td>
+				</tr>
+				<tr>
+					<td>.text-success</td>
+					<td><span class="text-success"> "text-success" 类的文本样式</span></td>
+				</tr>
+				<tr>
+					<td>.text-info</td>
+					<td><span class="text-info"> "text-info" 类的文本样式</span></td>
+				</tr>
+				<tr>
+					<td>.text-warning</td>
+					<td><span class="text-warning"> "text-warning" 类的文本样式</span></td>
+				</tr>
+				<tr>
+					<td>.text-danger</td>
+					<td><span class="text-danger">"text-danger" 类的文本样式</span></td> 
 				</tr>
 			</tbody>
 		</table>
+		
+		<h4 class="mt-25 mb-25"><strong>2、背景</strong></h4>
+		<table class="table table-striped table-hover">
+			<tbody class="text-center">
+				<tr>
+					<td>.bg-primary</td>
+					<td class="bg-primary">表格单元格使用了 "bg-primary" 类</td>
+				</tr>
+				<tr>
+					<td>.bg-success</td>
+					<td class="bg-success">表格单元格使用了 "bg-success" 类</td>
+				</tr>
+				<tr>
+					<td>.bg-info</td>
+					<td class="bg-info">表格单元格使用了 "bg-info" 类</td>
+				</tr>
+				<tr>
+					<td>.bg-warning</td>
+					<td class="bg-warning">表格单元格使用了 "bg-warning" 类</td>
+				</tr>
+				<tr>
+					<td>.bg-danger</td>
+					<td class="bg-danger">表格单元格使用了 "bg-danger" 类</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<h4 class="mt-25 mb-25"><strong>3、其他</strong></h4>
+		<table class="table table-striped table-hover">
+			<tbody class="text-center">
+				<tr>
+					<td>.pull-left</td>
+					<td>元素浮动到左边</td>
+				</tr>
+				<tr>
+					<td>.pull-right</td>
+					<td>元素浮动到右边</td>
+				</tr>
+				<tr>
+					<td>.center-block</td>
+					<td>设置元素为 display:block 并居中显示</td>
+				</tr>
+				<tr>
+					<td>.clearfix</td>
+					<td>清除浮动</td>
+				</tr>
+				<tr>
+					<td>.show</td>
+					<td>强制元素显示</td>
+				</tr>
+				<tr>
+					<td>.hidden</td>
+					<td>强制元素隐藏</td>
+				</tr>
+				<tr>
+					<td>.sr-only</td>
+					<td>除了屏幕阅读器外，其他设备上隐藏元素</td>
+				</tr>
+				<tr>
+					<td>.sr-only-focusable</td>
+					<td>与 .sr-only 类结合使用，在元素获取焦点时显示(如：键盘操作的用户)</td>
+				</tr>
+				<tr>
+					<td>.text-hide</td>
+					<td>将页面元素所包含的文本内容替换为背景图</td>
+				</tr>
+				<tr>
+					<td>.close</td>
+					<td>关闭按钮<button type="button" class="close" aria-hidden="true">&times;</button></td>
+				</tr>
+				<tr>
+					<td>.caret</td>
+					<td>显示下拉式功能 <span class="caret"></span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row" id="boot-paibang">
+		<h2 class="text-center">Bootstrap 排版样式</h2>
+		
+		<ul class="list-group mt-50">
+			<li class="list-group-item">定义（h1 到 h6）样式，若在内部加&lt;small&gt;，或加class="small"就能得到小一个字号的颜色更浅的文本</li>
+			<li class="list-group-item">强调标签 &lt;strong&gt;（设为更粗的文本）、&lt;em&gt;（设为斜体）</li>
+			<li class="list-group-item">&lt;abbr&gt; 在文本底部的一条虚线边框。加 class="initialism" 可悬浮更小字体的title</li>
+			<li class="list-group-item">&lt;address&gt; 标签显示联系信息</li>
+			<li class="list-group-item">&lt;blockquote&gt; 及一个 &lt;small&gt; 标签来标识引用的来源</li>
+		</ul>
+		<table class="table table-striped table-hover">
+			<tbody class="text-center">
+				<tr>
+					<td>.lead</td>
+					<td>使段落突出显示</td>
+				</tr>
+				<tr>
+					<td>.small</td>
+					<td>设定小文本 (设置为父文本的 85% 大小)</td>
+				</tr>
+				<tr>
+					<td>.text-left</td>
+					<td>设定文本左对齐</td>
+				</tr>
+				<tr>
+					<td>.text-center</td>
+					<td>设定文本居中对齐</td>
+				</tr>
+				<tr>
+					<td>.text-right</td>
+					<td>设定文本右对齐</td>
+				</tr>
+				<tr>
+					<td>.text-justify</td>
+					<td>设定文本对齐,段落中超出屏幕部分文字自动换行</td>
+				</tr>
+				<tr>
+					<td>.text-nowrap</td>
+					<td>段落中超出屏幕部分不换行</td>
+				</tr>
+				<tr>
+					<td>.text-lowercase</td>
+					<td>设定文本小写</td>
+				</tr>
+				<tr>
+					<td>.text-uppercase</td>
+					<td>设定文本大写</td>
+				</tr>
+				<tr>
+					<td>.text-centerapitalize</td>
+					<td>设定单词首字母大写</td>
+				</tr>
+				<tr>
+					<td>.initialism</td>
+					<td>显示在 &lt;abbr&gt; 元素中的文本以小号字体展示</td>
+				</tr>
+				<tr>
+					<td>.blockquote-reverse</td>
+					<td>设定引用右对齐</td>
+				</tr>
+				<tr>
+					<td>.list-unstyled</td>
+					<td>移除默认的列表样式，列表项中左对齐 ( &lt;ul&gt; 和 &lt;ol&gt; 中)</td>
+				</tr>
+				<tr>
+					<td>.list-inline</td>
+					<td>将所有列表项放置同一行</td>
+				</tr>
+				<tr>
+					<td>.dl-horizontal</td>
+					<td>该类设置了浮动和偏移，应用于 &lt;dl&gt; 元素和 &lt;dt&gt; 元素</td>
+				</tr>
+				<tr>
+					<td>.pre-scrollable</td>
+					<td>使 &lt;pre&gt; 元素可滚动 scrollable</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="row" id="boot-buju">
+		<h2 class="text-center">Bootstrap 网格系统--布局样式</h2>
+		
+		<h4>基本的网格结构</h4>
+		<p>下面是 Bootstrap 网格的基本结构：</p>
+		<pre class="prettyprint">
+&lt;div&nbsp;class=&quot;container&quot;&gt;
+    &lt;div&nbsp;class=&quot;row&quot;&gt;
+    &lt;div&nbsp;class=&quot;col-*-*&quot;&gt;&lt;/div&gt;
+        &lt;div&nbsp;class=&quot;col-*-*&quot;&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &lt;/div&gt;
+    &lt;div&nbsp;class=&quot;row&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+&lt;div&nbsp;class=&quot;container&quot;&gt;
+    ....
+&lt;/div&gt;
+		</pre>
+		<ul class="list-group mt-50">
+			<li class="list-group-item">【偏移列】使用 .col-md-offset-* 类 进行偏移设置</li>
+			<li class="list-group-item">【嵌套列】在已有的 .col-md-* 列内添加新的 .row，与一组 .col-md-* 列</li>
+			<li class="list-group-item">【列排序（难点）】改变带有 .col-md-push-* 和 .col-md-pull-* 类的内置网格列的顺序</li>
+		</ul>
+	</div>
+	<div class="row" id="boot-bjzj">
+		<h2 class="text-center">Bootstrap 布局组件</h2>
+		<h4>1、字体样式</h4>
+		<ul class="list-group">
+			<li class="list-group-item">&lt;span class="glyphicon glyphicon-name"&gt;&lt;/span&gt;  <span class="glyphicon glyphicon-search"></span></li>
+		</ul>
+		<h4>2、页面标题</h4>
+		<ul class="list-group">
+			<li class="list-group-item">&lt;div class="page-header"&gt;&lt;/div&gt;</li>
+		</ul>
+		<h4>3、输入框组</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+			<pre>
+&lt;div class="input-group"&gt;
+    &lt;span class="input-group-addon"&gt;@&lt;/span&gt;
+    &lt;input type="text" class="form-control" placeholder="twitterhandle"&gt;
+&lt;/div&gt;
+			</pre>
+			</li>
+			<li class="list-group-item">
+				<p>（1）该 &lt;span&gt; 放置在 &lt;input&gt; 元素的前面或者后面</p>
+				<p>（2）该 &lt;span&gt; 使用class="input-group-btn" 则为包裹按钮</p>
+				<p>（3）若要添加带有下拉菜单的按钮，只需要简单地在一个 class = "input-group-btn" 包裹按钮和设置下拉菜单即可</p>
+				<p>（4）（.input-group-lg、input-group-sm、input-group-xs）改变输入框组的大小。框中内容会自动调整</p>
+				<div class="input-group mt-5">
+					<span class="input-group-addon">@</span>
+					<input type="text" class="form-control" placeholder="twitterhandle">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button"> Go! </button>
+					</span>
+				</div>
+			</li>
+		</ul>
+		<h4>4、标签</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+			<pre>
+&lt;span class="label label-danger"&gt; bootstrap标签&lt;/span&gt;
+			</pre>
+			<span class="label label-danger">bootstrap标签</span>
+			</li>
+			<li class="list-group-item">
+				<p>label-default、label-primary、label-success、label-info、label-warning、label-danger </p>
+			</li>
+		</ul>
+		<h4>5、徽章</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+			&lt;span class="badge"&gt; 50&lt;/span&gt; <span class="badge">50</span><span class="badge"></span>
+			</li>
+			<li class="list-group-item">
+				<p>数值为空时不显示</p>
+			</li>
+		</ul>
+		<h4>6、面包屑导航</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<pre>
+&lt;ol class="breadcrumb"&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;2013&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="active"&gt;十一月&lt;/li&gt;
+&lt;/ol&gt;
+				</pre>
+				<ol class="breadcrumb">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">2013</a></li>
+					<li class="active">十一月</li>
+				</ol>
+			</li>
+		</ul>
+		<h4>7、进度条</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+				普通模式
+			</li>
+			<li class="list-group-item">
+				<pre>
+&lt;div class="progress"&gt;
+    &lt;div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+				</pre>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				其他颜色模式（ progress-bar-*，* 可以是 success、info、warning、danger）
+			</li>
+			<li class="list-group-item">
+				<pre>
+&lt;div class="progress"&gt;
+    &lt;div class="progress-bar  <span class="text-danger">progress-bar-success</span>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+				</pre>
+				<div class="progress">
+					<div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				条纹模式
+			</li>
+			<li class="list-group-item">
+				<pre>
+&lt;div class="progress <span class="text-danger">progress-striped</span>"&gt;
+    &lt;div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+				</pre>
+				<div class="progress progress-striped ">
+					<div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				动画模式
+			</li>
+			<li class="list-group-item">
+				<pre>
+&lt;div class="progress <span class="text-danger">progress-striped active</span>"&gt;
+    &lt;div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+				</pre>
+				<div class="progress progress-striped active">
+					<div class="progress-bar  progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+				</div>
+			</li>
+			<li class="list-group-item">
+				堆叠模式（把多个进度条放在相同的 .progress 中即可实现堆叠）
+			</li>
+			<li class="list-group-item">
+				<div class="progress">
+					<div class="progress-bar  progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;"></div>
+					<div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
+					<div class="progress-bar  progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
+				</div>
+			</li>
+			
+		</ul>
+		
 	</div>
 </div>
 <div class="mt-50"></div>

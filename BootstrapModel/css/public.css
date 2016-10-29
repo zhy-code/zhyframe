@@ -24,9 +24,6 @@
 /* font 系列 */
 .font12{font-size:12px!important;}.font14{font-size:14px!important;}.font16{font-size:16px!important;}.font18{font-size:18px!important;}.font20{font-size:20px!important;}.font22{font-size:22px!important;}.font24{font-size:24px!important;}.font26{font-size:26px!important;}.font28{font-size:28px!important;}
 
-/* text 系列 */
-.text-c{text-align:center}.text-l{text-align:left}.text-r{text-align:right}
-
 /* form 系列 */
 .table>tbody>tr>td{vertical-align: middle;}
 label {font-size:20px;cursor:pointer;}
@@ -38,4 +35,4 @@ input[class="input-checkbox"]:disabled + i,input[class="input-radio"]:disabled +
 input[class="input-checkbox"]:checked:disabled + i,input[class="input-radio"]:checked:disabled + i {background:#ccc;}
 
 /* 其他系列 */
-.clear{clear:both}.v-center{vertical-align:middle;}.fr{float:right;}.fl{float:left;}
+.clear{clear:both}.v-center{vertical-align:middle;}
