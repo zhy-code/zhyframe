@@ -13,10 +13,10 @@
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
 	<link rel="stylesheet" href="{{asset('css/bootstrap.min.css?v=3.3.6')}}" />
-	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css?v=4.4.0')}}" />
+	<link rel="stylesheet" href="{{asset('css/font-awesome.min.css?v=4.7.0')}}" />
 	<link rel="stylesheet" href="{{asset('css/animate.min.css')}}" />
 	<link rel="stylesheet" href="{{asset('css/style.min.css?v=4.1.0')}}" />
-	<link rel="stylesheet" href="{{asset('css/zhypublic.css')}}" />
+	<link rel="stylesheet" href="{{asset('css/public.css')}}" />
 	@section('head')
 	@show
 </head>

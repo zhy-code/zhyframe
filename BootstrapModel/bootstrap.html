@@ -592,14 +592,14 @@
 		<h4>基本的网格结构</h4>
 		<p>下面是 Bootstrap 网格的基本结构：</p>
 		<pre class="prettyprint">
-&lt;div&nbsp;class=&quot;container&quot;&gt;
-    &lt;div&nbsp;class=&quot;row&quot;&gt;
-    &lt;div&nbsp;class=&quot;col-*-*&quot;&gt;&lt;/div&gt;
-        &lt;div&nbsp;class=&quot;col-*-*&quot;&gt;&lt;/div&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+    &lt;div class="col-*-*"&gt;&lt;/div&gt;
+        &lt;div class="col-*-*"&gt;&lt;/div&gt;      
     &lt;/div&gt;
-    &lt;div&nbsp;class=&quot;row&quot;&gt;...&lt;/div&gt;
+    &lt;div class="row"&gt;...&lt;/div&gt;
 &lt;/div&gt;
-&lt;div&nbsp;class=&quot;container&quot;&gt;
+&lt;div class="container"&gt;
     ....
 &lt;/div&gt;
 		</pre>
@@ -745,9 +745,164 @@
 					<div class="progress-bar  progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"></div>
 				</div>
 			</li>
-			
 		</ul>
-		
+		<h4>8、下拉菜单</h4>
+		<ul class="list-group">
+			<li class="list-group-item">
+				<pre>
+&lt;div class="dropdown"&gt;
+    &lt;button type="button" class="btn" data-toggle="dropdown"&gt;
+        主题 &lt;span class="caret"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu"&gt;
+        &lt;li class="dropdown-header"&gt; 下拉菜单标题（可用于分类） &lt;/li&gt;
+        &lt;li&gt; Java &lt;/li&gt;
+        &lt;li&gt; PHP &lt;/li&gt;
+		&lt;li&gt; Javascript &lt;/li&gt;	
+    &lt;/ul&gt;
+&lt;/div&gt;
+				</pre>
+				<div class="dropdown"><!--dropup -->
+					<button type="button" class="btn" data-toggle="dropdown">
+						下拉菜单 <span class="caret"></span>
+				    </button>
+					<ul class="dropdown-menu">
+						<li class="dropdown-header">下拉菜单标题（可用于分类）</li>
+						<li>Java</li>
+						<li>PHP</li>
+						<li>Javascript</li>
+					</ul>
+				</div>
+			</li>
+		</ul>
+		<h4>9、图文分布</h4>
+		<ul class="list-group">
+			<li class="list-group-item">纯图片：在图像&lt;img&gt;标签外加上 class="thumbnail" 的容器。</li>
+			<li class="list-group-item">图文：&lt;div class="thumbnail"&gt;&lt;img&gt;&lt;/div&gt;&lt;div class="caption"&gt;text&lt;/div&gt;</li>
+		</ul>
+		<h4>10、列表组</h4>
+		<ul class="list-group">
+			<li class="list-group-item">父级标签带上 class="list-group"</li>
+			<li class="list-group-item">子集标签带上 class="list-group-item"</li>
+		</ul>
+		<h4>11、提示/警告</h4>
+		<ul class="list-group">
+			<li class="list-group-item">标签带上 class="alert alert-*" * 可以是 success、info、warning、danger</li>
+			<li class="list-group-item"> class="alert-dismissable" 表示可以删除，删除按钮带上 data-dismiss="alert"</li>
+			<li class="list-group-item"> 若有链接，可用 class="alert-link" 使链接样式实体化</li>
+			<li class="list-group-item">
+				<div class="alert alert-success alert-dismissable">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>实例
+				</div>
+			</li>
+		</ul>
+		<h4>12、按钮组</h4>
+		<ul class="list-group">
+			<li class="list-group-item">父级标签带上 class="btn-group" 将多个按钮放在同一行上</li>
+			<li class="list-group-item"> class="btn-toolbar" 将多个 btn-group 放在元素中</li>
+			<li class="list-group-item"> class="btn-group-vertical" 让按钮组垂直排列</li>
+		</ul>
+		<h4>13、面板（panel）</h4>
+		<ul class="list-group">
+			<li class="list-group-item"> class="panel panel-*" 面板基本样式， * 可以是 success、info、warning、danger</li>
+			<li class="list-group-item"> class="panel-heading" 面板头部</li>
+			<li class="list-group-item"> class="panel-title" 面板标题</li>
+			<li class="list-group-item"> class="panel-body" 面板内容</li>
+			<li class="list-group-item"> class="panel-footer" 面板脚注</li>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">带有 title 的面板标题</h3>
+					</div>
+					<div class="panel-body">这是一个基本的面板</div>
+					<div class="panel-footer">面板脚注</div>
+				</div>
+			</li>
+		</ul>
+		<h4>14、超大屏幕（Jumbotron）--用于banner</h4>
+		<ul class="list-group">
+			<li class="list-group-item">该组件可以增加标题的大小，并为登陆页面内容添加更多的外边距</li>
+			<li class="list-group-item">&lt;div class="jumbotron"&gt; 放在 class="container"内，不占全屏</li>
+			<li class="list-group-item">&lt;div class="jumbotron"&gt; 放在 class="container"外，占全屏</li>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">带有 title 的面板标题</h3>
+					</div>
+					<div class="panel-body">这是一个基本的面板</div>
+					<div class="panel-footer">面板脚注</div>
+				</div>
+			</li>
+		</ul>
+		<h4>15、Well</h4>
+		<ul class="list-group">
+			<li class="list-group-item">一种会引起内容凹陷显示或插图效果的容器</li>
+			<li class="list-group-item">&lt;div class="well"&gt;我在 Well 中！&lt;/div&gt;</li>
+			<li class="list-group-item">
+				<div class="well">我在 Well 中！</div>
+			</li>
+		</ul>
+		<h4>16、分页</h4>
+		<ul class="list-group">
+			<li class="list-group-item">普通分页</li>
+			<li class="list-group-item">父类添加 class="pagination" 来显示分页</li>
+			<li class="list-group-item">父类添加 class="pagination-lg/pagination-sm" 来获取不同的大小</li>
+			<li class="list-group-item">子类添加 class="disabled/active" 不可点击/当前页</li>
+			<li class="list-group-item">翻页</li>
+			<li class="list-group-item">父类添加 class="pager" 来显示翻页</li>
+			<li class="list-group-item">子类添加 class="previous/next" 链接向左对齐/链接向右对齐</li>
+			<li class="list-group-item">子类添加 class="disabled" 获得一个颜色变淡的外观</li>
+		</ul>
+		<h4>17、多媒体对象（Media Object）</h4>
+		<ul class="list-group">
+			<li class="list-group-item">.media：该 class 允许将媒体对象里的多媒体（图像、视频、音频）浮动到内容区块的左边或者右边</li>
+			<li class="list-group-item">.media-list：一个无序列表，可用于评论列表与文章列表</li>
+			<li class="list-group-item"> class="panel-title" 面板标题</li>
+			<li class="list-group-item"> class="panel-body" 面板内容</li>
+			<li class="list-group-item"> class="panel-footer" 面板脚注</li>
+			<li class="list-group-item">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">带有 title 的面板标题</h3>
+					</div>
+					<div class="panel-body">这是一个基本的面板</div>
+					<div class="panel-footer">面板脚注</div>
+				</div>
+			</li>
+		</ul>
+		<h4>18、导航栏</h4>
+		<ul class="list-group">
+			<li class="list-group-item">设置标签为 &lt;nav class="navbar navbar-default" role="navigation"&gt;</li>
+			<li class="list-group-item">navbar-fixed-top：固定顶部；navbar-fixed-bottom：固定底部</li>
+			<li class="list-group-item">navbar-static-top：静态顶部，能随着页面一起滚动的导航栏</li>
+			<li class="list-group-item">navbar-inverse：导航颜色倒置，黑底白字</li>
+			<li class="list-group-item">&lt;div class="navbar-header" &gt; 内包含带有 &lt;a class="navbar-brand"&gt;这让文本更大一号</li>
+			<li class="list-group-item">添加&lt; ul class="nav navbar-nav" &gt; &lt;/ul&gt; &lt; li class="active"&gt;表示选中，disabled 表示禁用</li>
+			<li class="list-group-item">navbar-left 或 navbar-right 左浮动/右浮动</li>
+		</ul>
+		<ul class="list-group">	
+			<li class="list-group-item">响应式</li>
+			<li class="list-group-item">折叠的内容必须在 &lt;div class="collapse navbar-collapse" &gt; &lt;/div&gt;中<div> </li>
+			<li class="list-group-item">折叠按钮： class="navbar-toggle" data-toggle="collapse" data-target="#ID值" </li>
+			<li class="list-group-item">折叠按钮包括 3个&lt;span class="icon-bar"&gt;&lt;/span&gt;组成汉堡按钮</li>	
+		</ul>
+		<ul class="list-group">	
+			<li class="list-group-item">导航栏中的表单</li>
+			<li class="list-group-item">&lt;form class="navbar-form navbar-left" role="search"&gt; &lt;/form&gt;</li>
+			<li class="list-group-item">导航栏中的按钮</li>
+			<li class="list-group-item">按钮在导航栏上垂直居中 class="navbar-btn" 可用在 &lt;a&gt; 和 &lt;input&gt; 上</li>
+			<li class="list-group-item">导航栏中的文本</li>
+			<li class="list-group-item"> class="navbar-text"，通常与 &lt;p&gt; 标签一起使用</li>
+			<li class="list-group-item">非导航链接</li>
+			<li class="list-group-item"> class="navbar-link"，改变&lt;a&gt;样式</li>
+		</ul>
+		<h4>19、导航元素</h4>
+		<ul class="list-group">
+			<li class="list-group-item">标签式导航 将上述中 &lt; ul &gt;中的 navbar-nav 改为 nav-tabs</li>
+			<li class="list-group-item">胶囊式导航 将上述中 &lt; ul &gt;中的 navbar-nav 改为 nav-pills （若要垂直形式 加 nav-stacked）</li>
+			<li class="list-group-item">两端对齐导航 加上 justified</li>
+			<li class="list-group-item">下拉菜单 同上述下拉菜单</li>
+		</ul>
 	</div>
 </div>
 <div class="mt-50"></div>

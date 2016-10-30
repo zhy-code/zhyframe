@@ -29,7 +29,7 @@
 label {font-size:20px;cursor:pointer;}
 label i {font-size:20px;font-style:normal;display:inline-block;width:20px;height:20px;text-align:center;line-height:20px;color:#fff;vertical-align:middle;margin:-2px 2px 1px 0px;border:#000 1px solid;}
 input[class="input-checkbox"],input[class="input-radio"] {display:none;}
-input[type="radio"] + i {border-radius:16px;}
+input[class="input-radio"] + i {border-radius:16px;}
 input[class="input-checkbox"]:checked + i,input[class="input-radio"]:checked + i {background:#2489c5;border:#2489c5;}
 input[class="input-checkbox"]:disabled + i,input[class="input-radio"]:disabled + i {border-color:#ccc;}
 input[class="input-checkbox"]:checked:disabled + i,input[class="input-radio"]:checked:disabled + i {background:#ccc;}

@@ -1,7 +1,6 @@
 @extends('admin.common.zhyframe')
 
 @section('head')
-<link href="{{asset('js/plugins/iCheck/custom.css')}}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -31,19 +30,20 @@
 						</label>
 
 						<div class="col-sm-8">
-							<div class="checkbox i-checks"><!--checkbox-inline-->
+							<div class="checkbox"><!--checkbox-inline-->
 								<label>
-									<input type="checkbox" value=""> <i></i> 选项1
+									<input type="checkbox" class="input-checkbox"><i class="mr-5">✓</i>选项1
 								</label>
 							</div>
-							<div class="checkbox i-checks">
+							<div class="checkbox">
 								<label>
-									<input type="checkbox" value="" checked=""> <i></i> 选项2（选中）</label>
+									<input type="checkbox" class="input-checkbox" checked><i class="mr-5">✓</i>选项2（选中）
+								</label>
 							</div>
 							
-							<div class="radio i-checks">
+							<div class="radio">
 								<label>
-									<input type="radio" value="option1" name="a"> <i></i> 选项1</label>
+									<input type="radio" class="input-radio" value="option1" name="a"> <i></i> 选项1</label>
 							</div>
 						</div>
 					</div>
@@ -136,14 +136,5 @@
 @endsection
 
 @section('footer')
-<script src="{{asset('js/plugins/iCheck/icheck.min.js')}}"></script>
 <script src="{{asset('js/public.js')}}"></script>
-<script>
-	$(document).ready(function () {
-		$('.i-checks').iCheck({
-			checkboxClass: 'icheckbox_square-green',
-			radioClass: 'iradio_square-green',
-		});
-	});
-</script>
 @endsection
