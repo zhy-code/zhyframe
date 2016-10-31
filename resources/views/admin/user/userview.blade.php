@@ -25,6 +25,20 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<label class="col-sm-2 control-label ftz-20">密码</label>
+
+						<div class="col-sm-8">
+							<input type="date" class="form-control" name="password">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label ftz-20">密码</label>
+
+						<div class="col-sm-8">
+							<input type="color" class="form-control" name="password">
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="col-sm-2 control-label ftz-16">
 							选择框XX
 						</label>
@@ -43,7 +57,7 @@
 							
 							<div class="radio">
 								<label>
-									<input type="radio" class="input-radio" value="option1" name="a"> <i></i> 选项1</label>
+									<input type="radio" class="input-radio" value="option1" name="a"><i class="mr-5">✓</i>选项1</label>
 							</div>
 						</div>
 					</div>

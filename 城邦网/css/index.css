@@ -1,0 +1,259 @@
+@charset "utf-8"; 
+
+*{
+	padding:0;
+	margin:0;
+	font-family: "Microsoft YaHei";
+}
+a{
+	text-decoration: none;
+}
+img{
+	border:none;
+}
+ul,li,dd,dl,dt{
+	list-style: none;
+}
+body{
+	min-width: 1200px;
+}
+.clear::after{
+	content:"";
+	display: block;
+	clear:both;
+}
+#container{
+	width: 100%;
+	height: auto;
+	background: #fff;
+	overflow: hidden;
+}
+.classify{
+	width: 1200px;
+	height:auto;
+	margin:0 auto;
+}
+.classify ul li{
+	padding:45px 57px;
+	text-align: center;
+	float: left;
+}
+.classify ul li strong{
+	color:#333;
+	font-size: 20px;
+	font-weight: normal;
+}
+.mall{
+	width: 186px;
+	height: 186px;
+	border-radius: 50%;
+	background: #fff;
+	margin:25px 0 15px 0;
+	position: relative;
+	cursor: pointer;
+}
+.mall-img{
+	width: 186px;
+	height: 186px;
+	border-radius: 50%;
+	position:absolute;
+	top:0;
+	left:0;
+	overflow: hidden;
+}
+.mall-img img{
+	width:186px;
+	height:186px;
+	border-radius: 50%;
+	float: left;
+	position: absolute;
+	top:0;
+	left:0;
+	opacity:0;
+}
+.mall-img img:first-child{
+	opacity: 1
+}
+.min-mall{
+	width: 71px;
+	height: 71px;
+	background:rgba(255,86,50,0.70);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#B2ff5632,endColorstr=#B2ff5632);
+	position: absolute;
+	top:57px;
+	left:57px; 
+	border-radius: 50%;
+}
+.min-mall img{
+	margin-top:25%;
+}
+.classify ul li p{
+	font-size: 12px;
+	color:#666;
+}
+.app{
+	background: #f7f7f7;
+	width: 100%;
+	height: 421px;
+	overflow: hidden;
+}
+.app-show{
+	width: 1200px;
+	height: 100%;
+	margin:0 auto;
+}
+.app-left{
+	float: left;
+	padding:56px 30px 50px 30px;
+}
+.app-left h2{
+	color:#ff5632;
+	font-size: 27px;
+	font-weight: normal;
+	margin-bottom: 20px;
+}
+.app-left h1{
+	color:#ff5632;
+	font-size: 31px;
+	margin-bottom: 30px;
+}
+.app-left p{
+	color:#333;
+	font-size: 12px;
+	width: 536px;
+	line-height: 20px;
+}
+.app-tel{
+	margin-top:28px;
+}
+.tel-left{
+	float: left;
+	margin-right: 12px;
+}
+.tel-left .iphone{
+	color: #fff;
+	text-align: center;
+	width: 132px;
+	height: 42px;
+	border-radius: 3px;
+	background: url(../images/iphone.png) no-repeat no-repeat;
+	line-height: 42px;
+	cursor: pointer;
+}
+.tel-left .android{
+	color: #fff;
+	text-align: center;
+	width: 132px;
+	height: 42px;
+	border-radius: 3px;
+	background: url(../images/android.png) no-repeat no-repeat;
+	line-height: 42px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+.tel-right{
+	float:left;
+	width: 90px;
+	height: 90px;
+	cursor: pointer;
+}
+.app-right{
+	float:left;
+	padding:20px 136px 0px;
+}
+.home{
+	width: 100%;
+	height: auto;
+}
+.home-text{
+	width: 1200px;
+	height:auto;
+	margin:0 auto;
+}
+.home-text ul li{
+	float: left;
+	padding:50px 78px;
+	text-align: center;
+}
+.home-text ul li h1{
+	color:#394043;
+	font-size: 15px;
+	margin:20px 0 10px 0;
+	display: block;
+}
+.home-text ul li span{
+	color:#999;
+	font-size: 12px;
+}
+#foot{
+	width: 100%;
+	height: auto;
+	background: #ff5632;
+}
+.minfoot{
+	width: 1200px;
+	height: auto;
+	margin:0 auto;
+	padding:68px 0 26px 0;
+}
+.compay-logo{
+	float: left;
+	margin-right: 147px;
+}
+.compay-logo img{
+	float: left;
+	margin-right: 12px;
+}
+.name{
+	float: left;
+	margin-top:18px;
+}
+.name h1{
+	color:#fff;
+	font-size: 19px;
+	font-weight: normal;
+}
+.name span{
+	color:#fff;
+	font-size:12px;
+}
+.compay-text{
+	float: left;
+}
+.compay-text ul li{
+	float: left;
+	width: 210px;
+}
+.compay-text ul li h1{
+	color:#fff;
+	font-size: 12px;
+}
+.compay-text ul li a{
+	color:#fff;
+	font-size: 12px;
+	font-family: "simsun";
+	display: block;
+	line-height: 25px;
+}
+.add{
+	width: 100%;
+	/*height: 36px;*/
+	border-top: 1px solid #FD4B24;
+	text-align: center;
+}
+.join{
+	display: inline-block;
+}
+.join a{
+	display: inline-block;
+	/*line-height: 36px;*/
+	color:#fff;
+	font-size: 12px;
+	border-left:1px solid #fff;
+	padding:0 8px;
+	margin:15px 0;
+	float: left;
+}
+.join a:first-child{
+	border-left:none;
+}
