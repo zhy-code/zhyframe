@@ -15,7 +15,7 @@ class AdminUser extends Model
 
     protected $hidden = ['user_password', 'user_login_rnd'];
 	
-	protected $appends = ['user_status_format', 'user_last_login_time_format', 'user_operation'];
+	protected $appends = ['user_status_format', 'user_last_login_time_format', 'user_operation', 'user_checkbox'];
 	
     public function setUserPasswordAttribute($user_password)
     {
@@ -26,6 +26,12 @@ class AdminUser extends Model
     {
         $result = $this->user_status ? '正常' : '禁用';
 		return $result;
+    }
+	
+	public function getUserCheckboxAttribute()
+    {
+        $html = '<label><input type="checkbox" name="checkboxList" value="'.$this->user_id.'" class="input-checkbox"><i>✓</i></label>';
+		return $html;
     }
 	
 	public function getUserLastLoginTimeFormatAttribute()
@@ -42,7 +48,7 @@ class AdminUser extends Model
 		} else {
 			$html .= "<i class='fa fa-level-up ml-15' onclick=layChangeStatus('/admin/user/userstatus/{$this->user_id}/1','启用')></i>";
 		}
-		$html .= "<i class='fa fa-trash-o ml-15' onclick=layListDel(this,'/admin/user/destroy/{$this->user_id}','tr')></i>";
+		$html .= "<i class='fa fa-trash-o ml-15' onclick=layListDel(this,'/admin/user/destroy','{$this->user_id}','tr')></i>";
 		return $html;
     }
 

@@ -1,6 +1,7 @@
 @extends('admin.common.zhyframe')
 
 @section('head')
+<meta name="csrf-token" content="{{csrf_token()}}">
 <link href="{{asset('js/plugins/bootstrap-table/bootstrap-table.min.css')}}" rel="stylesheet">
 @endsection
 
@@ -27,18 +28,16 @@ table tbody tr td{
 						<div class="example">
 							<div class="btn-group hidden-xs" id="tableEventsToolbar" role="group">
 								<button type="button" class="btn btn-outline btn-default mr-10">
-									<i class="fa fa-plus-square-o" aria-hidden="true"></i>添加管理员
+									<i class="fa fa-plus-square-o mr-5" aria-hidden="true"></i>添加管理员
 								</button>
 								<button type="button" class="btn btn-outline btn-default">
-									<i class="fa fa-trash-o" aria-hidden="true"></i>批量删除
+									<i class="fa fa-trash-o mr-5" aria-hidden="true"></i>批量删除
 								</button>
 							</div>
-							<form id="userListForm">
-							<input type="hidden" name="_method" value="DELETE">
 							<table id="tableEvents" data-height="400" data-mobile-responsive="true">
 								<thead>
 									<tr>
-										<th data-field="state" data-checkbox="true"></th>
+										<th data-field="user_checkbox"><label><input name="checkboxAll" type="checkbox" class="input-checkbox" onclick="checkChose()"><i>✓</i></label></th>
 										<th data-field="user_name">管理员账号</th>
 										<th data-field="user_status_format">管理员状态</th>
 										<th data-field="user_last_login_time_format">最后登录的时间</th>
@@ -47,7 +46,6 @@ table tbody tr td{
 									</tr>
 								</thead>
 							</table>
-							</form>
 						</div>
 					</div>
 					<!-- End Example Events -->
@@ -56,6 +54,10 @@ table tbody tr td{
 		</div>
     </div>
 </div>
+<form id="userDelForm">
+	<input type="hidden" name="_method" value="delete">
+	<input type="hidden" name="id" id="delid">
+</form>
 @endsection
 
 @section('footer')

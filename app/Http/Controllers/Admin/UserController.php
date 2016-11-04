@@ -60,11 +60,9 @@ class UserController extends Controller
 	/**
 	 * 后台管理员删除
 	 */
-	public function toUserDestroy($userid)
+	public function toUserDestroy(Request $request)
 	{
-		$user = AdminUser::find($userid);
-		dd($user);
-		$re = $user->delete();
+		$re = AdminUser::destroy($request->get('id'));
 		if ($re) {
 			$jsonData = [
         		'status'  => '1',

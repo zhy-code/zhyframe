@@ -11,6 +11,6 @@ Route::group(['middleware'=>'adminAuth', 'prefix' => 'admin'],function() {
 	Route::get('/user/useredit/{userid}', 'Admin\UserController@userEdit');
 	Route::get('/user/userstatus/{userid}/{status?}', 'Admin\UserController@toUserStatus');
 
-	Route::delete('/user/destroy/{userid}', 'Admin\UserController@toUserDestroy');
+	Route::delete('/user/destroy', 'Admin\UserController@toUserDestroy');
 });
 
