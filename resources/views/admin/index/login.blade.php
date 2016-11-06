@@ -11,7 +11,7 @@
 		<div class="col-sm-4">
 		</div>
 		<div class="col-sm-4 login-top">
-			<form method="post" action="" id="loginForm">
+			<form id="loginForm">
 				{{ csrf_field() }}
 				<div class="form-group ">
 					<h1 class="no-margins">后台管理系统</h1>

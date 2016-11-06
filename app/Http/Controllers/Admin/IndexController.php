@@ -59,7 +59,6 @@ class IndexController extends Controller
 	            'message' => '用户名不存在',
 	        ];
         } else {
-        	/*
         	$check_pwd = Hash::check($data['user_password'] , $userInfo->user_password);
         	if (!$check_pwd) {
         		$jsonData = [
@@ -67,7 +66,6 @@ class IndexController extends Controller
 		            'message' => '密码错误',
 		        ];
         	}
-        	*/
         	if (!$userInfo->user_status) {
         		$jsonData = [
 		            'status'  => '0',
@@ -84,7 +82,7 @@ class IndexController extends Controller
         	AdminUser::where('user_id',$userInfo->user_id)->update($update_data);
         	session(['adminuser' => $userInfo]);
         	$jsonData = [
-        		'status'  => '1',
+        		'status'  => '2',
 		        'message' => '登陆成功',
 		        'jumpurl' => '/admin',
         	];

@@ -43,6 +43,15 @@ function layOpenView(url, height, width, title){
 }
 
 /**
+ * layer-close
+ * 关闭 layer 弹框
+ */
+function layClose(){
+	var index = parent.layer.getFrameIndex(window.name);
+	parent.layer.close(index);
+}
+
+/**
  * layer-changeStatus
  * 使用layer改变状态值
  */
@@ -77,12 +86,22 @@ function layAjaxForm(parameter, url, method){
 		data : parameter,
 		success : function(res){
 			if(res.status > 0){
-				layer.msg(res.message,{time:1200},function(){
-					location.href = res.jumpurl;
-				});
+				if(res.status == 2){
+					layer.msg(res.message,{time:1200},function(){
+						location.href = res.jumpurl;
+					});
+				}else{
+					layer.msg(res.message,{time:1200},function(){
+						layClose();
+					});
+				}
 			}else if(res.status == 0){
-				layer.msg(res.message,{time:1200});
+				alert(res.message);
+				layer.msg(res.message,{time:1500});
 			}
+		},
+		error : function(){
+			alert('fail');
 		}
 	});
 }
