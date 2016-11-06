@@ -30,7 +30,7 @@ table tbody tr td{
 								<button type="button" class="btn btn-outline btn-default mr-10">
 									<i class="fa fa-plus-square-o mr-5" aria-hidden="true"></i>添加管理员
 								</button>
-								<button type="button" class="btn btn-outline btn-default">
+								<button type="button" class="btn btn-outline btn-default" onclick="layListMultiDel('/admin/user/destroy')">
 									<i class="fa fa-trash-o mr-5" aria-hidden="true"></i>批量删除
 								</button>
 							</div>

@@ -62,7 +62,8 @@ class UserController extends Controller
 	 */
 	public function toUserDestroy(Request $request)
 	{
-		$re = AdminUser::destroy($request->get('id'));
+		$ids = explode(',', $request->get('id'));
+		$re = AdminUser::destroy($ids);
 		if ($re) {
 			$jsonData = [
         		'status'  => '1',

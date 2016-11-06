@@ -7,6 +7,25 @@ function elementEncry(obj){
 	$(obj).val(valEncry);
 }
 
+/**
+ * 全选/全不选
+ */
+function checkChose(){
+	var statusall= $('[name="checkboxAll"]').prop('checked');
+	if( statusall == true){
+		//已勾选的去除勾选
+		$('[name=checkboxList]').each(function(k,obj){
+			$(obj).removeAttr('checked');
+		});
+		$('[name="checkboxAll"]').removeAttr('checked');
+	}else{
+		//未勾选的增加勾选
+		$('[name=checkboxList]').each(function(k,obj){
+			$(obj).prop('checked','checked');
+		});
+		$('[name="checkboxAll"]').prop('checked','checked');
+	}
+}
 
 /**
  * layer-open
@@ -22,6 +41,7 @@ function layOpenView(url, height, width, title){
 		content: url
 	}); 
 }
+
 /**
  * layer-changeStatus
  * 使用layer改变状态值
@@ -44,6 +64,7 @@ function layChangeStatus(url, word){
 		});
 	});
 }
+
 /**
  * layer-form
  * 使用layer提交表单
@@ -96,24 +117,11 @@ function layListDel(obj, url, id, delelement){
 	});
 }
 
-function checkChose(){
-	var statusall= $('[name="checkboxAll"]').prop('checked');
-	if( statusall == true){
-		//已勾选的去除勾选
-		$('[name=checkboxList]').each(function(k,obj){
-			$(obj).removeAttr('checked');
-		});
-		$('[name="checkboxAll"]').removeAttr('checked');
-	}else{
-		//未勾选的增加勾选
-		$('[name=checkboxList]').each(function(k,obj){
-			$(obj).prop('checked','checked');
-		});
-		$('[name="checkboxAll"]').prop('checked','checked');
-	}
-}
-
-function info_MultiDel(obj,url){
+/**
+ * layer-multi-delete
+ * 使用 layer 批量删除列表中的元素
+ */
+function layListMultiDel(url){
 	
 	var id = '';
 	$('[name=checkboxList]').each(function(k,obj){
@@ -124,6 +132,11 @@ function info_MultiDel(obj,url){
 			}
 		}
 	});
+	if(id == ''){
+		layer.msg('未选中删除项',{time:1200});
+		return;
+	}
+	id = id.substring(0,id.length-1);
 	$('#delid').val(id);
 	layer.confirm('确认要批量删除吗？',function(index){	
 		$.ajax({
