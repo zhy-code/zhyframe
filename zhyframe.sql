@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 本地数据库
-Source Server Version : 50715
-Source Host           : localhost:3306
+Source Server         : 192.168.0.137
+Source Server Version : 50619
+Source Host           : 192.168.0.137:3306
 Source Database       : zhyframe
 
 Target Server Type    : MYSQL
-Target Server Version : 50715
+Target Server Version : 50619
 File Encoding         : 65001
 
-Date: 2016-10-24 21:29:02
+Date: 2016-11-07 11:13:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS `admin_user`;
 CREATE TABLE `admin_user` (
   `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '后台管理员自增Id',
   `user_name` varchar(30) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员名/账号',
-  `user_password` varchar(50) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员密码',
+  `user_password` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员密码',
   `user_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '后台管理员状态 0正常，1禁用',
   `user_remark` varchar(100) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员备注',
   `user_last_login_time` int(11) NOT NULL COMMENT '最后登录时间',
@@ -85,16 +85,18 @@ CREATE TABLE `admin_user` (
   `user_add_time` int(11) NOT NULL COMMENT '后台管理员添加时间',
   `user_add_ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员添加IP',
   `user_edit_time` int(11) NOT NULL COMMENT '后台管理员最后编辑的时间',
-  `user_eidt_ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员最后编辑的IP',
+  `user_edit_ip` varchar(20) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员最后编辑的IP',
   `user_login_rnd` varchar(64) COLLATE utf8_unicode_ci NOT NULL COMMENT '后台管理员登陆标识符，随机数',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `admin_user_user_name_unique` (`user_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records of admin_user
 -- ----------------------------
-INSERT INTO admin_user VALUES ('1', 'admin', '10470c3b4b1fed12c3baac014be15fac67c6e815', '1', '测试管理员', '1477314796', '127.0.0.1', '郑焰', '1477103046', '127.0.0.1', '1477103046', '127.0.0.1', 'zzz');
+INSERT INTO admin_user VALUES ('1', 'admin', '', '1', '雪霁CEO', '1478428787', '127.0.0.1', 'zheng', '1477103046', '127.0.0.1', '1478430132', '127.0.0.1', 'zzz');
+INSERT INTO admin_user VALUES ('2', 'admin2', '$2y$10$x55fGpgvQMPRI.m6.xCdv.8n1ZVwHLx8UfJMOyR2cASCrKHfbwMLy', '1', '测试管理员，系统设定密码', '1478428473', '127.0.0.1', '郑焰2', '1477103046', '127.0.0.1', '1478428371', '127.0.0.1', 'zzz');
+INSERT INTO admin_user VALUES ('3', 'admin3', '$2y$10$x55fGpgvQMPRI.m6.xCdv.8n1ZVwHLx8UfJMOyR2cASCrKHfbwMLy', '1', '测试管理员3', '1477314796', '127.0.0.1', '郑焰3', '1477103046', '127.0.0.1', '1477103046', '127.0.0.1', 'zzz');
 
 -- ----------------------------
 -- Table structure for `migrations`
