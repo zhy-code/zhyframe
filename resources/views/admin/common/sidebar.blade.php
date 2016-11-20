@@ -8,9 +8,9 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header" style="text-align:center">
                         <div class="dropdown profile-element">
-                            <span><img alt="image" class="img-circle" style="width:75px;height:75px;" src="img/admin_headpic.jpg" /></span>
+                            <span><img alt="image" class="img-circle H75" style="width:75px;" src="img/admin_headpic.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                                <span class="block mt-15" style="font-size:20px;">{{$adminuser['user_name']}}</span>
+                                <span class="block mt-15 font20">{{$adminuser['user_name']}}</span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
                                 <li><a class="J_menuItem" href="profile.html">个人信息</a>
@@ -28,7 +28,7 @@
                         @if ($val['soninfo'])
 						<a href="#">
                             <i class="fa fa-{{$val['menu_icon']}}"></i>
-                            <span class="nav-label" style="font-size:15px;">{{$val['menu_name']}}</span>
+                            <span class="nav-label font14">{{$val['menu_name']}}</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
@@ -39,7 +39,9 @@
 							@endforeach
                         </ul>
 						@else
-							<a class="J_menuItem" href="/{{strtolower($val['menu_module'])}}/{{strtolower($val['menu_controller'])}}/{{strtolower($val['menu_action'])}}/{{strtolower($val['menu_parameter'])}}"><i class="fa fa-{{$val['menu_icon']}}"></i> <span class="nav-label">{{$val['menu_name']}}</span></a>
+						<a class="J_menuItem" href="/{{strtolower($val['menu_module'])}}/{{strtolower($val['menu_controller'])}}/{{strtolower($val['menu_action'])}}/{{strtolower($val['menu_parameter'])}}">
+							<i class="fa fa-{{$val['menu_icon']}}"></i>
+							<span class="nav-label font14">{{$val['menu_name']}}</span></a>
 						@endif
                     </li>
 					@endforeach
