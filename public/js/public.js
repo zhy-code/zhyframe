@@ -92,16 +92,13 @@ function layAjaxForm(parameter, url, method){
 					});
 				}else{
 					layer.msg(res.message,{time:1200},function(){
+						parent.location.reload();
 						layClose();
 					});
 				}
 			}else if(res.status == 0){
-				alert(res.message);
 				layer.msg(res.message,{time:1500});
 			}
-		},
-		error : function(){
-			alert('fail');
 		}
 	});
 }

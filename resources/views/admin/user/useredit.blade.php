@@ -35,8 +35,8 @@
 				</div>
 				<div class="form-group mt-50">
 					<div class="col-sm-4 col-sm-offset-5 ">
-						<button class="btn btn-primary" onclick="layAjaxForm($('#userInfoForm').serialize(), '/admin/user/usereditsave/{{$userinfo->user_id}}', 'post')">保&nbsp;&nbsp;存</button>
-						<button class="btn btn-white ml-15" onclick="layClose()">取&nbsp;&nbsp;消</button>
+						<span class="btn btn-primary" onclick="layAjaxForm($('#userInfoForm').serialize(), '/admin/user/usereditsave/{{$userinfo->user_id}}', 'post')">保&nbsp;&nbsp;存</span>
+						<span class="btn btn-white ml-15" onclick="layClose()">取&nbsp;&nbsp;消</span>
 					</div>
 				</div>
 			</form>

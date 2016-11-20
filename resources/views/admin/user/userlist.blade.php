@@ -15,7 +15,7 @@ table tbody tr td{
 }
 </style>
 <body style="font-size:16px;">
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper animated fadeInRight">
 	<div class="ibox float-e-margins">
 		<div class="ibox-title">
 			<h2>管理员列表</h2>

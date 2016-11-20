@@ -6,49 +6,50 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
 use View;
 use Session;
 use Redirect;
-use App\Model\AdminUser;
+use App\Model\AdminMenu;
 
-class UserController extends Controller
+class MenuController extends Controller
 {
 
 	/**
-	 * 后台管理员列表
+	 * 后台菜单列表
 	 */
-	public function userList()
+	public function menuList()
 	{
-		$user_list = AdminUser::get()->toArray();
-		$user_list_json = json_encode($user_list);
-		return View::make('admin.user.userlist', ['userlist'=>$user_list_json]);
+		$menu_list = AdminUser::get()->toArray();
+		$menu_list_json = json_encode($menu_list);
+		return View::make('admin.menu.menulist', ['menulist'=>$menu_list_json]);
 	}
 	
 	/**
-	 * 后台管理员添加页面
+	 * 后台菜单添加页面
 	 */
-	public function userAdd()
+	public function menuAdd()
 	{
-		return View::make('admin.user.useradd');
+		return View::make('admin.menu.menuadd');
 	}
 	
 	/**
-	 * 后台管理员添加保存
+	 * 后台菜单添加保存
 	 */
-	public function userAddSave(Requests\AdminUserAddRequest $request)
+	public function menuAddSave(Requests\AdminUserAddRequest $request)
 	{
 		$data = $request->except(['_token','_method']);
-		$data['user_status'] = 1;
-		$data['user_add_time'] = time();
-		$data['user_add_ip'] = $request->getClientIp();
-		$data['user_edit_time'] = time();
-		$data['user_edit_ip'] = $request->getClientIp();
+		$data['menu_status'] = 1;
+		$data['menu_add_time'] = time();
+		$data['menu_add_ip'] = $request->getClientIp();
+		$data['menu_edit_time'] = time();
+		$data['menu_edit_ip'] = $request->getClientIp();
 		$re = AdminUser::insert($data);
 		if ($re) {
 			$jsonData = [
         		'status'  => '1',
 		        'message' => '增加成功',
-		        'jumpurl' => '/admin/user/userlist',
+		        'jumpurl' => '/admin/menu/menulist',
         	];
 		} else {
 			$jsonData = [
@@ -60,31 +61,31 @@ class UserController extends Controller
 	}
 	
 	/**
-	 * 后台管理员编辑页面
+	 * 后台菜单编辑页面
 	 */
-	public function userEdit($userid)
+	public function menuEdit($menuid)
 	{
-		$user_info = AdminUser::find($userid);
-		return View::make('admin.user.useredit', ['userinfo'=>$user_info]);
+		$menu_info = AdminUser::find($menuid);
+		return View::make('admin.menu.menuedit', ['menuinfo'=>$menu_info]);
 	}
 	
 	/**
-	 * 后台管理员编辑保存
+	 * 后台菜单编辑保存
 	 */
-	public function userEditSave(Requests\AdminUserEditRequest $request, $userid)
+	public function menuEditSave(Requests\AdminUserEditRequest $request, $menuid)
 	{
 		$data = $request->except(['_token','_method']);
-		if($request->get('user_password')){
-			$data['user_password'] = Hash::make(md5($data['user_password']));
+		if($request->get('menu_password')){
+			$data['menu_password'] = Hash::make(md5($data['menu_password']));
 		}
-		$data['user_edit_time'] = time();
-		$data['user_edit_ip'] = $request->getClientIp();
-		$re = AdminUser::where('user_id',$userid)->update($data);
+		$data['menu_edit_time'] = time();
+		$data['menu_edit_ip'] = $request->getClientIp();
+		$re = AdminUser::where('menu_id',$menuid)->update($data);
 		if ($re) {
 			$jsonData = [
         		'status'  => '1',
 		        'message' => '编辑成功',
-		        'jumpurl' => '/admin/user/userlist',
+		        'jumpurl' => '/admin/menu/menulist',
         	];
 		} else {
 			$jsonData = [
@@ -96,18 +97,18 @@ class UserController extends Controller
 	}
 	
 	/**
-	 * 后台管理员变更状态
+	 * 后台菜单变更状态
 	 */
-	public function toUserStatus($userid, $status=0)
+	public function toUserStatus($menuid, $status=0)
 	{
-		$user_info = AdminUser::find($userid);
-		$user_info->user_status = $status;
-		$re = $user_info->save();
+		$menu_info = AdminUser::find($menuid);
+		$menu_info->menu_status = $status;
+		$re = $menu_info->save();
 		if ($re) {
 			$jsonData = [
         		'status'  => '1',
 		        'message' => '变更成功',
-		        'jumpurl' => '/admin/user/userlist',
+		        'jumpurl' => '/admin/menu/menulist',
         	];
 		} else {
 			$jsonData = [
@@ -119,7 +120,7 @@ class UserController extends Controller
 	}
 
 	/**
-	 * 后台管理员删除
+	 * 后台菜单删除
 	 */
 	public function toUserDestroy(Request $request)
 	{
