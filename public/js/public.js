@@ -96,12 +96,8 @@ function layAjaxForm(parameter, url, method){
 					});
 				}
 			}else if(res.status == 0){
-				alert(res.message);
 				layer.msg(res.message,{time:1500});
 			}
-		},
-		error : function(){
-			alert('fail');
 		}
 	});
 }

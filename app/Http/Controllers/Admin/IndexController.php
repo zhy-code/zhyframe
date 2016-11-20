@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
 use View;
+use DB;
 use Session;
 use Redirect;
 use App\Model\AdminMenu;
@@ -97,5 +98,30 @@ class IndexController extends Controller
     {
         $res = Session::forget('adminuser');
         return Redirect::to('/admin/login');
+    }
+
+    /**
+     * 网站信息编辑页面
+     */
+    public function webInfo()
+    {
+        $webInfo = DB::table('web_info')->first();
+        return View::make('admin.index.webinfo', ['webinfo' => $webInfo]);
+    }
+
+    /**
+     * 网站信息编辑操作
+     */
+    public function toWebInfo(Request $request)
+    {
+        $data = $request->except(['_token']);
+        $webInfo = DB::table('web_info')->first();
+        $re = DB::table('web_info')->where('id', $webInfo->id)->update($data);
+        if($re) {
+            $jsonData = [ 'status'  => '2', 'message' => '修改成功', 'jumpurl' => '/admin/index/webinfo' ];
+        } else {
+            $jsonData = [ 'status'  => '0', 'message' => '修改失败' ];
+        }
+        return response()->json($jsonData);
     }
 }

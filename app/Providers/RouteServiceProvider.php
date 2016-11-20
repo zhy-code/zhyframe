@@ -37,9 +37,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapApiRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapHomeRoutes();
 
-        //
+        $this->mapAdminRoutes();
     }
 
     /**
@@ -49,14 +49,32 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
+    protected function mapHomeRoutes()
     {
         Route::group([
             'middleware' => 'web',
             'namespace' => $this->namespace,
         ], function ($router) {
-            //require base_path('routes/web.php');
-			foreach (glob(base_path('routes') . '/*.php') as $file){
+			foreach (glob(base_path('routes') . '/home/*.php') as $file){
+				require $file;
+			}
+        });
+    }
+
+    /**
+     * Define the "web" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+			foreach (glob(base_path('routes') . '/admin/*.php') as $file){
 				require $file;
 			}
         });
@@ -76,7 +94,10 @@ class RouteServiceProvider extends ServiceProvider
             'namespace' => $this->namespace,
             'prefix' => 'api',
         ], function ($router) {
-            require base_path('routes/api.php');
+            //require base_path('routes/api.php');
+            foreach (glob(base_path('routes') . '/api/*.php') as $file){
+                require $file;
+            }
         });
     }
 }
