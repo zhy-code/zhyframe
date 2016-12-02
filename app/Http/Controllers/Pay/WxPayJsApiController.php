@@ -1,6 +1,11 @@
 <?php
-namespace Home\Controller;
-use Think\Controller;
+namespace App\Http\Controllers\Pay;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use DB;
+use Redirect;
 
 /**
  * JSAPI支付实现类
@@ -12,28 +17,31 @@ use Think\Controller;
  
 class WxPayJsApiController extends Controller {
 	
-	public function _initialize(){
+	//private $openid;
+
+	public function __construct(){
 		header("Content-type:text/html;charset=utf-8");
 		//微信支付API
-		import('Vendor.Wxpay.lib.WxPayConfig','','.php');
-		import('Vendor.Wxpay.lib.WxPayData','','.php');
-		import('Vendor.Wxpay.lib.WxPayException','','.php');
-		import('Vendor.Wxpay.lib.WxPayNotify','','.php');
-		import('Vendor.Wxpay.lib.WxPayApi','','.php');
-		import('Vendor.Wxpay.log','','.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayConfig.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayData.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayException.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayNotify.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayApi.php');
+		require_once(app_path().'/Library/Wxpay/log.php');
     }
 	
 	public $data = null;
 	
 	function weixinxpay($info){
-		
-		$openId = $this->GetOpenid();
+		date_default_timezone_set('Asia/Shanghai');
+		//$this->GetOpenid();
+		$openId = 'o8Y7zvnhXgeOrW0-KCaBlLnsGwfQ';
 
 		$input = new \WxPayUnifiedOrder();
 		$input->SetBody($info['body']);
 		$input->SetAttach($info['attach']);
-		$input->SetOut_trade_no($info['order_sn']);
-		$input->SetTotal_fee($info['price']);
+		$input->SetOut_trade_no($info['out_trade_no']);
+		$input->SetTotal_fee($info['total_fee']);
 		$input->SetTime_start(date("YmdHis"));
 		$input->SetTime_expire(date("YmdHis",time()+600));
 		$input->SetGoods_tag($info['tag']);
@@ -41,8 +49,8 @@ class WxPayJsApiController extends Controller {
 		$input->SetTrade_type("JSAPI");
 		$input->SetOpenid($openId);
 		$order = \WxPayApi::unifiedOrder($input);
-		
 		$jsApiParameters = $this->GetJsApiParameters($order);
+
 		return $jsApiParameters;
 	}
 	
@@ -58,7 +66,7 @@ class WxPayJsApiController extends Controller {
 
 		if (!isset($_GET['code'])){
 			//触发微信返回code码
-			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING']);
+			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].'/wxauth');
 			$url = $this->__CreateOauthUrlForCode($baseUrl);
 			Header("Location: $url");
 			exit();
@@ -105,7 +113,7 @@ class WxPayJsApiController extends Controller {
 		//初始化curl
 		$ch = curl_init();
 		//设置超时
-		curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
+		//curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
 		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,FALSE);
@@ -116,7 +124,7 @@ class WxPayJsApiController extends Controller {
 			curl_setopt($ch,CURLOPT_PROXY, \WxPayConfig::CURL_PROXY_HOST);
 			curl_setopt($ch,CURLOPT_PROXYPORT, \WxPayConfig::CURL_PROXY_PORT);
 		}
-		//运行curl，结果以jason形式返回
+		//运行curl，结果以json形式返回
 		$res = curl_exec($ch);
 		curl_close($ch);
 		//取出openid

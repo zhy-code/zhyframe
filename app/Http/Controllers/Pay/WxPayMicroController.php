@@ -1,6 +1,11 @@
 <?php
-namespace Home\Controller;
-use Think\Controller;
+namespace App\Http\Controllers\Pay;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use DB;
+use Redirect;
 
 /**
  * 刷卡支付实现类
@@ -17,14 +22,15 @@ use Think\Controller;
  
 class WxPayMicroController extends Controller {
 	
-	public function _initialize(){
+	public function __construct(){
 		header("Content-type:text/html;charset=utf-8");
 		//微信支付API
-		import('Vendor.Wxpay.lib.WxPayConfig','','.php');
-		import('Vendor.Wxpay.lib.WxPayData','','.php');
-		import('Vendor.Wxpay.lib.WxPayException','','.php');
-		import('Vendor.Wxpay.lib.WxPayNotify','','.php');
-		import('Vendor.Wxpay.lib.WxPayApi','','.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayConfig.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayData.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayException.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayNotify.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayApi.php');
+		require_once(app_path().'/Library/Wxpay/log.php');
     }
 	
 	/**

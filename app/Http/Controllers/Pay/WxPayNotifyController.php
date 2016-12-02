@@ -1,14 +1,19 @@
 <?php
-namespace Home\Controller;
+namespace App\Http\Controllers\Pay;
 
-header("Content-type:text/html;charset=utf-8");
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use DB;
+use Redirect;
+
 //微信支付API
-import('Vendor.Wxpay.lib.WxPayConfig','','.php');
-import('Vendor.Wxpay.lib.WxPayData','','.php');
-import('Vendor.Wxpay.lib.WxPayException','','.php');
-import('Vendor.Wxpay.lib.WxPayNotify','','.php');
-import('Vendor.Wxpay.lib.WxPayApi','','.php');
-import('Vendor.Wxpay.log','','.php');
+require_once(app_path().'/Library/Wxpay/lib/WxPayConfig.php');
+require_once(app_path().'/Library/Wxpay/lib/WxPayData.php');
+require_once(app_path().'/Library/Wxpay/lib/WxPayException.php');
+require_once(app_path().'/Library/Wxpay/lib/WxPayNotify.php');
+require_once(app_path().'/Library/Wxpay/lib/WxPayApi.php');
+require_once(app_path().'/Library/Wxpay/log.php');
 
 
 class WxPayNotifyController extends \WxPayNotify {
@@ -43,8 +48,16 @@ class WxPayNotifyController extends \WxPayNotify {
 	 */
 	function wxpayend($out_trade_no){
 		
-		
-		if($result){
+		//此处为变更订单状态业务逻辑
+		$chargedata = [
+			'isend' => 1,
+		];
+		$order_re = DB::table('charge')->where('pay_code',$out_trade_no)->update($chargedata);
+		if($order_re){
+			$order_info = DB::table('charge')->where('pay_code',$out_trade_no)->first();
+			DB::table('driver')->where('id', $order_info->userid)->increment('account_money',$order_info->charge_money);
+		}
+		if($order_re){
 			return true;
 		}else{
 			return false;

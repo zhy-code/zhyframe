@@ -1,21 +1,27 @@
 <?php
-namespace Home\Controller;
-use Think\Controller;
+namespace App\Http\Controllers\Pay;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use DB;
+use Redirect;
 
 /**
  * 刷卡支付实现类
  */
 class WxPayNativeController extends Controller {
 	
-	public function _initialize(){
+	public function __construct(){
 		header("Content-type:text/html;charset=utf-8");
 		//微信支付API
-		import('Vendor.Wxpay.lib.WxPayConfig','','.php');
-		import('Vendor.Wxpay.lib.WxPayData','','.php');
-		import('Vendor.Wxpay.lib.WxPayException','','.php');
-		import('Vendor.Wxpay.lib.WxPayNotify','','.php');
-		import('Vendor.Wxpay.lib.WxPayApi','','.php');
-		import('Vendor.Wxpay.log','','.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayConfig.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayData.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayException.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayNotify.php');
+		require_once(app_path().'/Library/Wxpay/lib/WxPayApi.php');
+		require_once(app_path().'/Library/Wxpay/log.php');
+
     }
 	
 	function wxnativepayapi($info){
@@ -23,8 +29,8 @@ class WxPayNativeController extends Controller {
 		$input = new \WxPayUnifiedOrder();
 		$input->SetBody($info['body']);
 		$input->SetAttach($info['attach']);
-		$input->SetOut_trade_no($info['order_sn']);
-		$input->SetTotal_fee($info['price']);
+		$input->SetOut_trade_no($info['out_trade_no']);
+		$input->SetTotal_fee($info['total_fee']);
 		$input->SetTime_start(date("YmdHis"));
 		$input->SetTime_expire(date("YmdHis",time()+600));
 		$input->SetGoods_tag($info['tag']);
