@@ -16,8 +16,6 @@ use Redirect;
  */
  
 class WxPayJsApiController extends Controller {
-	
-	//private $openid;
 
 	public function __construct(){
 		header("Content-type:text/html;charset=utf-8");
@@ -28,15 +26,15 @@ class WxPayJsApiController extends Controller {
 		require_once(app_path().'/Library/Wxpay/lib/WxPayNotify.php');
 		require_once(app_path().'/Library/Wxpay/lib/WxPayApi.php');
 		require_once(app_path().'/Library/Wxpay/log.php');
+		
+		date_default_timezone_set('Asia/Shanghai');
+		
     }
 	
 	public $data = null;
 	
 	function weixinxpay($info){
-		date_default_timezone_set('Asia/Shanghai');
-		//$this->GetOpenid();
-		$openId = 'o8Y7zvnhXgeOrW0-KCaBlLnsGwfQ';
-
+		
 		$input = new \WxPayUnifiedOrder();
 		$input->SetBody($info['body']);
 		$input->SetAttach($info['attach']);
@@ -47,34 +45,11 @@ class WxPayJsApiController extends Controller {
 		$input->SetGoods_tag($info['tag']);
 		$input->SetNotify_url($info['notifyurl']);
 		$input->SetTrade_type("JSAPI");
-		$input->SetOpenid($openId);
+		$input->SetOpenid($info['openid']);
 		$order = \WxPayApi::unifiedOrder($input);
 		$jsApiParameters = $this->GetJsApiParameters($order);
 
 		return $jsApiParameters;
-	}
-	
-	/**
-	 * 
-	 * 通过跳转获取用户的openid，跳转流程如下：
-	 * 1、设置自己需要调回的url及其其他参数，跳转到微信服务器https://open.weixin.qq.com/connect/oauth2/authorize
-	 * 2、微信服务处理完成之后会跳转回用户redirect_uri地址，此时会带上一些参数，如：code
-	 * 
-	 * @return 用户的openid
-	 */
-	public function GetOpenid(){
-
-		if (!isset($_GET['code'])){
-			//触发微信返回code码
-			$baseUrl = urlencode('http://'.$_SERVER['HTTP_HOST'].'/wxauth');
-			$url = $this->__CreateOauthUrlForCode($baseUrl);
-			Header("Location: $url");
-			exit();
-		}else{
-		    $code = $_GET['code'];
-			$openid = $this->getOpenidFromMp($code);
-			return $openid;
-		}
 	}
 	
 	/**
@@ -99,39 +74,6 @@ class WxPayJsApiController extends Controller {
 		$jsapi->SetPaySign($jsapi->MakeSign());
 		$parameters = json_encode($jsapi->GetValues());
 		return $parameters;
-	}
-	
-	/**
-	 * 
-	 * 通过code从工作平台获取openid机器access_token
-	 * @param string $code 微信跳转回来带上的code
-	 * 
-	 * @return openid
-	 */
-	public function GetOpenidFromMp($code){
-		$url = $this->__CreateOauthUrlForOpenid($code);
-		//初始化curl
-		$ch = curl_init();
-		//设置超时
-		//curl_setopt($ch, CURLOPT_TIMEOUT, $this->curl_timeout);
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,FALSE);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST,FALSE);
-		curl_setopt($ch, CURLOPT_HEADER, FALSE);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		if(\WxPayConfig::CURL_PROXY_HOST != "0.0.0.0" 
-			&& \WxPayConfig::CURL_PROXY_PORT != 0){
-			curl_setopt($ch,CURLOPT_PROXY, \WxPayConfig::CURL_PROXY_HOST);
-			curl_setopt($ch,CURLOPT_PROXYPORT, \WxPayConfig::CURL_PROXY_PORT);
-		}
-		//运行curl，结果以json形式返回
-		$res = curl_exec($ch);
-		curl_close($ch);
-		//取出openid
-		$data = json_decode($res,true);
-		$this->data = $data;
-		$openid = $data['openid'];
-		return $openid;
 	}
 	
 	/**
@@ -185,36 +127,4 @@ class WxPayJsApiController extends Controller {
 		return $parameters;
 	}
 	
-	/**
-	 * 
-	 * 构造获取code的url连接
-	 * @param string $redirectUrl 微信服务器回跳的url，需要url编码
-	 * 
-	 * @return 返回构造好的url
-	 */
-	private function __CreateOauthUrlForCode($redirectUrl){
-		$urlObj["appid"] = \WxPayConfig::APPID;
-		$urlObj["redirect_uri"] = "$redirectUrl";
-		$urlObj["response_type"] = "code";
-		$urlObj["scope"] = "snsapi_base";
-		$urlObj["state"] = "STATE"."#wechat_redirect";
-		$bizString = $this->ToUrlParams($urlObj);
-		return "https://open.weixin.qq.com/connect/oauth2/authorize?".$bizString;
-	}
-	
-	/**
-	 * 
-	 * 构造获取open和access_toke的url地址
-	 * @param string $code，微信跳转带回的code
-	 * 
-	 * @return 请求的url
-	 */
-	private function __CreateOauthUrlForOpenid($code){
-		$urlObj["appid"] = \WxPayConfig::APPID;
-		$urlObj["secret"] = \WxPayConfig::APPSECRET;
-		$urlObj["code"] = $code;
-		$urlObj["grant_type"] = "authorization_code";
-		$bizString = $this->ToUrlParams($urlObj);
-		return "https://api.weixin.qq.com/sns/oauth2/access_token?".$bizString;
-	}
 }
