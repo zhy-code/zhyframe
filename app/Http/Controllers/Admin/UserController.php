@@ -29,7 +29,8 @@ class UserController extends Controller
 	 */
 	public function userAdd()
 	{
-		return View::make('admin.user.useradd');
+		//return View::make('admin.user.useradd');
+		return View::make('admin.user.userform');
 	}
 	
 	/**
