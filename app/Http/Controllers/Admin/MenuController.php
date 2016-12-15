@@ -20,8 +20,21 @@ class MenuController extends Controller
 	 */
 	public function menuList()
 	{
-		$menu_list = AdminUser::get()->toArray();
-		$menu_list_json = json_encode($menu_list);
+		$menu_parents = AdminMenu::where('menu_parent_id',0)->get();
+        foreach($menu_parents as $key => $menu){
+            $tmp[$key]['text'] = $menu->menu_name;
+            $tmp[$key]['tags'] = ["<span onclick=alert('汉子')>Edit</span>", "<span onclick=alert('汉子')>Delete</span>"];
+            $menu_child = AdminMenu::where('menu_parent_id', $menu->menu_id)->get();
+            if(count($menu_child)){
+                foreach ($menu_child as $k => $child){
+                    $tmp_child[$k]['text'] = $child->menu_name;
+                    $tmp_child[$k]['tags'] = ["<span onclick=alert('汉子')>Edit</span>", "<span onclick=alert('汉子')>Delete</span>"];
+                }
+                $tmp[$key]['nodes'] = $tmp_child;
+            }
+        }
+        $menu_list_json = json_encode($tmp);
+        //dd($menu_list_json);
 		return View::make('admin.menu.menulist', ['menulist'=>$menu_list_json]);
 	}
 	
