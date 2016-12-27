@@ -8,13 +8,13 @@ Route::group(['middleware'=>'adminAuth', 'prefix' => 'admin'],function() {
 	Route::get('/menu/menulist', 'Admin\menuController@menuList');
 
 	Route::get('/menu/menuadd', 'Admin\menuController@menuAdd');
-	Route::post('/menu/menuaddsave', 'Admin\menuController@menuAddSave');
+	Route::post('/menu/menuaddsave', 'Admin\menuController@toMenuAdd');
 
 	Route::get('/menu/menuedit/{menuid}', 'Admin\menuController@menuEdit');
-	Route::post('/menu/menueditsave/{menuid}', 'Admin\menuController@menuEditSave');
+	Route::post('/menu/menueditsave/{menuid}', 'Admin\menuController@toMenuEdit');
 
-	Route::get('/menu/menustatus/{menuid}/{status?}', 'Admin\menuController@tomenuStatus');
+	Route::get('/menu/menustatus/{menuid}/{status?}', 'Admin\menuController@toMenuStatus');
 
-	Route::delete('/menu/destroy', 'Admin\menuController@tomenuDestroy');
+	Route::delete('/menu/destroy', 'Admin\menuController@toMenuDestroy');
 });
 

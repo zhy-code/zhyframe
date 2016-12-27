@@ -8,6 +8,13 @@ function elementEncry(obj){
 }
 
 /**
+ * 选择图片
+ */
+$('.file-select-image').click(function() {
+	$(this).next('input[type="file"]').click();
+});
+
+/**
  * 全选/全不选
  */
 function checkChose(){
@@ -52,11 +59,39 @@ function layClose(){
 }
 
 /**
+ *  layer-prompt
+ *  layer 备注管理
+ */
+function layRemarks(url,id,msg){
+	layer.prompt({title: '备注', formType: 2, value:msg}, function(text){
+		$.ajax({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			},
+			type : "post",
+			dataType : "JSON",
+			url : url,
+			data : { id : id,
+				content : text
+			},
+			success : function(res){
+				if(res.status > 0){
+					layer.msg(res.message,{time:1500},function(){
+						location.reload();
+					});
+				}else{
+					layer.msg(res.message,{time:1500});
+				}
+			}
+		});
+	});
+}
+/**
  * layer-changeStatus
  * 使用layer改变状态值
  */
 function layChangeStatus(url, word){
-	layer.confirm('确认要'+ word +'吗？',function(index){	
+	layer.confirm('确定 '+ word +' 吗？',function(index){
 		$.ajax({
 			type : 'get',
 			dataType : "JSON",
@@ -117,10 +152,14 @@ function layListDel(obj, url, id, delelement){
 			type : 'post',
 			dataType : "JSON",
 			url : url,
-			data : $('#userDelForm').serialize(),
+			data : $('#delForm').serialize(),
 			success : function(res){
 				if(res.status > 0){
 					layer.msg(res.message,{time:1200},function(){
+						if(delelement == 'reload'){
+							location.reload();
+							return true;
+						}
 						$(obj).parents(delelement).animate({opacity:'0'},1200,function(){
 							$(obj).parents(delelement).remove();
 						});
@@ -162,7 +201,7 @@ function layListMultiDel(url){
 			type : 'post',
 			dataType : "JSON",
 			url : url,
-			data : $('#userDelForm').serialize(),
+			data : $('#delForm').serialize(),
 			success : function(res){
 				if(res.status > 0){
 					layer.msg(res.message,{time:1200},function(){
@@ -175,3 +214,29 @@ function layListMultiDel(url){
 		});
 	});
 };
+
+/**
+ * layer-changeStatus
+ * 使用layer改变状态值 并 说明理由
+ */
+function layRefuse(url, word){
+	layer.confirm('确认'+ word +'吗？',function(index){
+		layer.prompt({title: word + '理由', formType: 2}, function(text){
+			$.ajax({
+				type : "get",
+				dataType : "JSON",
+				url : url,
+				data : {content : text},
+				success : function(res){
+					if(res.status > 0){
+						layer.msg(res.message,{time:1500},function(){
+							location.reload();
+						});
+					}else{
+						layer.msg(res.message,{time:1500});
+					}
+				}
+			});
+		});
+	});
+}

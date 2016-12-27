@@ -10,13 +10,22 @@
 <div class="wrapper animated fadeInRight">
 	<div class="ibox float-e-margins">
 		<div class="ibox-title">
-			<h2>菜单列表</h2>
+			<h2>
+				菜单列表
+				<button type="button" class="btn btn-outline btn-default pull-right" onclick="layOpenView('/admin/menu/menuadd','90%','90%','菜单添加')">
+					<i class="fa fa-plus-square-o mr-5" aria-hidden="true"></i>添加菜单
+				</button>
+			</h2>
 		</div>
 		<div class="ibox-content">
 			<div id="treeview" class="test"></div>
 		</div>
     </div>
 </div>
+<form id="delForm">
+	<input type="hidden" name="_method" value="delete">
+	<input type="hidden" name="id" id="delid">
+</form>
 @endsection
 
 @section('footer')

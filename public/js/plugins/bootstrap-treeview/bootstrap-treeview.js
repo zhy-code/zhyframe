@@ -405,7 +405,7 @@
 			iconWrapper: '<span class="icon"></span>',
 			icon: '<i></i>',
 			link: '<a href="#" style="color:inherit;"></a>',
-			badge: '<span class="badge"></span>'
+			badge: '<span class="badge" style="font-size:18px;"></span>'
 		},
 
 		_css: '.list-group-item{cursor:pointer;}span.indent{margin-left:10px;margin-right:10px}span.icon{margin-right:5px}'

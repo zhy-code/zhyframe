@@ -21,10 +21,10 @@ class IndexController extends Controller
 	 */
 	public function index()
 	{
-		$menu_list = AdminMenu::where(['menu_parent_id' => 0, 'menu_status' => 1])->get()->toArray();
+		$menu_list = AdminMenu::where(['menu_parent_id' => 0, 'menu_status' => 1])->orderBy('menu_sort','asc')->get()->toArray();
 		if ($menu_list) {
 			foreach ($menu_list as $key => $value) {
-				$menu_list[$key]['soninfo'] = AdminMenu::where(['menu_parent_id' => $value['menu_id'], 'menu_status' => 1])->get()->toArray();
+				$menu_list[$key]['soninfo'] = AdminMenu::where(['menu_parent_id' => $value['menu_id'], 'menu_status' => 1])->orderBy('menu_sort','asc')->get()->toArray();
 			}
 		}
 		$admin_user = Session::get('adminuser')->toArray();
@@ -36,7 +36,8 @@ class IndexController extends Controller
 	 */
 	public function welcome()
 	{
-		return View::make('admin.index.welcome');
+		$siteInfo = DB::table('site_info')->first();
+		return View::make('admin.index.welcome', ['siteinfo' => $siteInfo]);
 	}
 
 	/**
@@ -103,22 +104,33 @@ class IndexController extends Controller
     /**
      * 网站信息编辑页面
      */
-    public function webInfo()
+    public function siteInfo()
     {
-        $webInfo = DB::table('web_info')->first();
-        return View::make('admin.index.webinfo', ['webinfo' => $webInfo]);
+        $siteInfo = DB::table('site_info')->first();
+        return View::make('admin.index.siteinfo', ['siteinfo' => $siteInfo]);
     }
 
     /**
      * 网站信息编辑操作
      */
-    public function toWebInfo(Request $request)
+    public function toSiteInfo(Request $request)
     {
-        $data = $request->except(['_token']);
-        $webInfo = DB::table('web_info')->first();
-        $re = DB::table('web_info')->where('id', $webInfo->id)->update($data);
+        $data = $request->except(['_token','s']);
+		
+		//Base64 保存图片
+		$fileroot = 'uploads/images/'.date("Ymd").'/';
+		$data['site_logo'] = isset($data['site_logo']) ? $this->basePic($data['site_logo'],$fileroot):'';
+		$data['wechat_logo'] = isset($data['wechat_logo']) ? $this->basePic($data['wechat_logo'],$fileroot):'';
+		
+        $siteInfo = DB::table('site_info')->first();
+		if($siteInfo){
+			$re = DB::table('site_info')->where('id', $siteInfo->id)->update($data);
+		}else{
+			$re = DB::table('site_info')->insert($data);
+		}
+        
         if($re) {
-            $jsonData = [ 'status'  => '2', 'message' => '修改成功', 'jumpurl' => '/admin/index/webinfo' ];
+            $jsonData = [ 'status'  => '2', 'message' => '修改成功', 'jumpurl' => '/admin/index/siteinfo' ];
         } else {
             $jsonData = [ 'status'  => '0', 'message' => '修改失败' ];
         }

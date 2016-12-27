@@ -1,33 +1,81 @@
-@extends('admin.common.zhyframe')
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Laravel</title>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Raleway', sans-serif;
+                font-weight: 100;
+                height: 100vh;
+                margin: 0;
+            }
 
-@section('head')
+            .full-height {
+                height: 100vh;
+            }
 
-@endsection
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
 
-@section('content')
+            .position-ref {
+                position: relative;
+            }
 
-<body class="gray-bg">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="wrapper wrapper-content animated fadeInUp">
-                <ul class="notes">
-                    @for($i=0;$i<=5;$i++)
-					<li>
-                        <div>
-                            <small>2014年10月24日(星期五) 下午5:31</small>
-                            <h4>HTML5 文档类型</h4>
-                            <p>Bootstrap 使用到的某些 HTML 元素和 CSS 属性需要将页面设置为 HTML5 文档类型。在你项目中的每个页面都要参照下面的格式进行设置。</p>
-                            <p>Bootstrap 使用到的某些 HTML 元素和 CSS 属性需要将页面设置为 HTML5 文档类型。在你项目中的每个页面都要参照下面的格式进行设置。</p>
-                            <a href="javascript:;" onclick="layListDel(this, 'li')"><i class="fa fa-trash-o"></i></a>
-                        </div>
-                    </li>
-					@endfor
-                </ul>
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 64px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 12px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    <a href="{{ url('/login') }}">Login</a>
+                    <a href="{{ url('/register') }}">Register</a>
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    <div>@if($siteinfo) {{$siteinfo->site_name}} @else 上海云洞科技有限公司 @endif</div>
+					<div style="margin-top:25px;">信息管理系统</div>
+                </div>
             </div>
         </div>
-    </div>  
-@endsection
-
-@section('footer')
-
-@endsection
+    </body>
+</html>

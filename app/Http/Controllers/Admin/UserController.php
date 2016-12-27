@@ -36,9 +36,9 @@ class UserController extends Controller
 	/**
 	 * 后台管理员添加保存
 	 */
-	public function userAddSave(Requests\AdminUserAddRequest $request)
+	public function toUserAdd(Requests\AdminUserAddRequest $request)
 	{
-		$data = $request->except(['_token','_method']);
+		$data = $request->except(['_token','_method','s']);
 		$data['user_status'] = 1;
 		$data['user_add_time'] = time();
 		$data['user_add_ip'] = $request->getClientIp();
@@ -72,9 +72,9 @@ class UserController extends Controller
 	/**
 	 * 后台管理员编辑保存
 	 */
-	public function userEditSave(Requests\AdminUserEditRequest $request, $userid)
+	public function toUserEdit(Requests\AdminUserEditRequest $request, $userid)
 	{
-		$data = $request->except(['_token','_method']);
+		$data = $request->except(['_token','_method','s']);
 		if($request->get('user_password')){
 			$data['user_password'] = Hash::make(md5($data['user_password']));
 		}

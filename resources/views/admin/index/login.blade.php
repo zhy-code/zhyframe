@@ -28,7 +28,7 @@
 			
 			<div class="signup-footer">
 			<div style="float:right">
-				&copy; Copyright 雪霁互联网技术开发
+				&copy; Copyright ZhyFrame
 			</div>
 		</div>
 		</div>

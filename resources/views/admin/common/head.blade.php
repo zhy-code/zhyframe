@@ -6,8 +6,8 @@
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="Cache-Control" content="no-siteapp" />
 	<title>ZhyFrame后台管理系统</title>
-	<meta name="keywords" content="雪霁,互联网,后台管理,Laravel">
-	<meta name="description" content="上海雪霁互联网有限公司">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
 	<link rel="shortcut icon" href="{{asset('favicon.ico')}}">
 	<!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
