@@ -1,3 +1,5 @@
+var formStatus = false;
+
 /**
  * 表单元素加密
  */
@@ -114,6 +116,13 @@ function layChangeStatus(url, word){
  * 使用layer提交表单
  */
 function layAjaxForm(parameter, url, method){
+	
+	if(formStatus){
+		layer.msg('提交中...',{time:1500});
+		return true;
+	}
+	formStatus = true;
+	
 	$.ajax({
 		type : method,
 		dataType : "JSON",
@@ -133,6 +142,7 @@ function layAjaxForm(parameter, url, method){
 				}
 			}else if(res.status == 0){
 				layer.msg(res.message,{time:1500});
+				formStatus = false;
 			}
 		}
 	});

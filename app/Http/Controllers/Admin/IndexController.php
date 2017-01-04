@@ -16,6 +16,7 @@ use App\Model\AdminUser;
 
 class IndexController extends Controller
 {
+	 
 	/**
 	 * 后台控制主架构
 	 */

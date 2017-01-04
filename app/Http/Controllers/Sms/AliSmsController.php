@@ -16,7 +16,7 @@ class AliSmsController extends Controller
 	private $sms_type = 'SMS_14510093';
 	
 	function __construct(){
-		require_once(app_path().'/Library/AlidayuSms/TopSdk.php');
+		require_once(app_path().'/Http/Library/AlidayuSms/TopSdk.php');
 	}
 	
 	//发送短信（验证码）
