@@ -61,7 +61,7 @@
 	<div class="col-sm-3">
 		<span class="help-block m-b-none" id="LastImgBtn_X">
 			<img src="{{asset('img/nopic.jpg')}}" class="W200" onclick="openfile(this)">
-			<input type="file" style="display:none;" onchange="picload(event,'500','0.95','LastImgBtn_X','banner_url[]')" />
+			<input type="file" style="display:none;" onchange="picload(event,'1200','0.95','LastImgBtn_X','banner_url[]')" />
 		</span>
 	</div>
 	<div class="col-sm-4">

@@ -55,32 +55,19 @@ function picpress(blob,width,quality,boxid,fieldname){
 		 * 生成base64
 		 * 兼容修复移动设备需要引入mobileBUGFix.js
 		 */
-		var base64 = canvas.toDataURL('image/jpeg', quality || 0.9);
-		/*
-		// 修复IOS
-		if (navigator.userAgent.match(/iphone/i)) {
-			var mpImg = new MegaPixImage(img);
-			mpImg.render(canvas, {
-				maxWidth: w,
-				maxHeight: h,
-				quality: quality || 0.9
-			});
-			base64 = canvas.toDataURL('image/jpeg', quality || 0.9);
-		}
-
-		// 修复android
-		if (navigator.userAgent.match(/Android/i)) {
-			var encoder = new JPEGEncoder();
-			base64 = encoder.encode(ctx.getImageData(0, 0, w, h), quality * 100 || 90);
-		}
-		*/
+		var base64 = canvas.toDataURL('image/png', quality || 0.9);
+		
 		// 生成结果
 		result = {
 			base64: base64,
 			clearBase64: base64.substr(base64.indexOf(',') + 1)
 		};
 		
-		dealpic(result,boxid,fieldname);
+		if(fieldname.indexOf('more_')>=0){
+			dealmorepic(result,boxid,fieldname);
+		}else{
+			dealpic(result,boxid,fieldname);
+		}
 	};
 }
 
@@ -92,6 +79,17 @@ function dealpic(result,boxid,fieldname){
 		new_img+='<input type="hidden" name="'+fieldname+'" value="'+result.base64+'"></div>';
 	
 	$('#'+boxid).html(new_img);
+}
+
+
+/**
+ * 处理生成结果，追加到相应的div区域内 ---- 多图
+ */
+function dealmorepic(result,boxid,fieldname){
+	var new_img ='<li><div class="MobImgUpl_imgBox"><div class="MobImgUpl_img"><img src="'+result.base64+'"></div></div>';
+		new_img+='<i class="fa fa-trash" onclick="$(this).parent().remove();"></i>';
+		new_img+='<input type="hidden" name="'+fieldname+'" value="'+result.base64+'">';
+		new_img+='</li>';
 	
-	//$('#'+boxid).find('span').hide();
+	$('#'+boxid).before(new_img);
 }

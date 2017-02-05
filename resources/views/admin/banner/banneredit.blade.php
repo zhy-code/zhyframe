@@ -33,7 +33,7 @@
 				<div class="form-group addbanner">
 					<label class="col-sm-2 control-label">@if($key==0)banner图集：@endif</label>
 					<div class="col-sm-3">
-						<span class="help-block m-b-none" id="LastImgBtn_0">
+						<span class="help-block m-b-none" id="LastImgBtn_{$key}">
 							<img src="{{asset($banner_url)}}" class="W200 file-select-image">
 							<input type="file" style="display:none;" onchange="picload(event,'1200','0.95','LastImgBtn_0','banner_url[]')" />
 							<input type="hidden" name="banner_url[{{$key}}]" value="{{$banner_url}}">
@@ -69,7 +69,7 @@
 	<div class="col-sm-3">
 		<span class="help-block m-b-none" id="LastImgBtn_X">
 			<img src="{{asset('img/nopic.jpg')}}" class="W200" onclick="openfile(this)">
-			<input type="file" style="display:none;" onchange="picload(event,'500','0.95','LastImgBtn_X','banner_url[]')" />
+			<input type="file" style="display:none;" onchange="picload(event,'1200','0.95','LastImgBtn_X','banner_url[]')" />
 		</span>
 	</div>
 	<div class="col-sm-4">
